@@ -79,7 +79,10 @@
         "sections.closing-cta",
         "sections.glass-cta",
         "sections.phase-timeline",
-        "sections.media-card-grid"
+        "sections.media-card-grid",
+        "sections.leadership-section",
+        "legal.section",
+        "sections.section-heading"
       ]
     },
     "cover": {
