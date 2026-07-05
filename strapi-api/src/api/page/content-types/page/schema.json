@@ -10,22 +10,53 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "slug": {
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "template": {
+      "type": "enumeration",
+      "enum": [
+        "default"
+      ],
+      "default": "default"
     },
     "sections": {
       "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "components": [
         "blocks.rich-text",
         "sections.hero-simple",
@@ -36,7 +67,19 @@
         "blocks.logos",
         "blocks.card",
         "blocks.button",
-        "sections.call-to-action"
+        "sections.call-to-action",
+        "sections.hero",
+        "sections.page-hero",
+        "sections.stats-bar",
+        "sections.feature-split",
+        "sections.solutions-grid",
+        "sections.promo-banner",
+        "sections.pillar-grid",
+        "sections.news-grid",
+        "sections.closing-cta",
+        "sections.glass-cta",
+        "sections.phase-timeline",
+        "sections.media-card-grid"
       ]
     },
     "cover": {

@@ -40,6 +40,18 @@
         "permanent",
         "temporary"
       ]
+    },
+    "from": {
+      "type": "string",
+      "required": true
+    },
+    "to": {
+      "type": "string",
+      "required": true
+    },
+    "statusCode": {
+      "type": "integer",
+      "default": 301
     }
 
   }
