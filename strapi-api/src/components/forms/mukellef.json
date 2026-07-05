@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_forms_mukellefs",
+  "info": {
+    "displayName": "Mukellef",
+    "icon": "walk"
+  },
+  "options": {},
+  "attributes": {
+    "fullname": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "cari_unvan": {
+      "type": "string"
+    }
+  }
+}

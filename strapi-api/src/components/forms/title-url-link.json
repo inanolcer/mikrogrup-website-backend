@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_forms_title_url_links",
+  "info": {
+    "displayName": "Title URL Link",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "url": {
+      "type": "string",
+      "required": false
+    }
+  }
+}

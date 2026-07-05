@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSRF Protection Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+        .info {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSRF Protection Test</h1>
+    
+    <div class="container">
+        <h2>1. Get CSRF Token</h2>
+        <button id="getTokenBtn">Get CSRF Token</button>
+        <button id="checkCookieBtn">Check Cookie</button>
+        <div id="tokenResult"></div>
+    </div>
+    
+    <div class="container">
+        <h2>2. Test API Request with Token</h2>
+        <button id="testWithTokenBtn">Test Contact Form</button>
+        <button id="testWithoutTokenBtn">Test without Token</button>
+        <div id="apiResult"></div>
+    </div>
+    
+    <script>
+        // Base URL for API requests
+        const API_BASE_URL = window.location.origin;
+        
+        // Store the CSRF token
+        let csrfToken = '';
+        
+        // Function to check if a cookie exists
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+        
+        // Show all cookies (for debugging)
+        function showAllCookies() {
+            const cookies = document.cookie.split(';');
+            return cookies.length > 0 && cookies[0] !== '' ? 
+                cookies.map(c => c.trim()).join('<br>') : 
+                'No cookies visible to JavaScript (they may be HttpOnly)';
+        }
+        
+        // Check for CSRF cookie
+        document.getElementById('checkCookieBtn').addEventListener('click', () => {
+            const csrfCookie = getCookie('csrf_token');
+            document.getElementById('tokenResult').innerHTML = `
+                <p class="${csrfCookie ? 'info' : 'error'}">
+                    ${csrfCookie ? 'CSRF cookie found in document.cookie!' : 'No CSRF cookie found in document.cookie.'}
+                </p>
+                <p>All cookies:</p>
+                <div>${showAllCookies()}</div>
+                <p>Note: HttpOnly cookies won't be visible here.</p>
+            `;
+        });
+        
+        // Get CSRF token
+        document.getElementById('getTokenBtn').addEventListener('click', async () => {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/csrf-token`, {
+                    method: 'GET',
+                    credentials: 'include' // Important: Send cookies
+                });
+                
+                const data = await response.json();
+                csrfToken = data.csrfToken;
+                
+                document.getElementById('tokenResult').innerHTML = `
+                    <p class="success">Token received successfully!</p>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                    <p>Token has been stored for use in subsequent requests.</p>
+                    <p>Important: The token is stored as a JavaScript variable AND should also be in your cookies automatically.</p>
+                    <hr>
+                    <p>Cookies:</p>
+                    <div>${showAllCookies()}</div>
+                `;
+            } catch (error) {
+                document.getElementById('tokenResult').innerHTML = `
+                    <p class="error">Error getting token: ${error.message}</p>
+                `;
+                console.error('Error:', error);
+            }
+        });
+        
+        // Test API with token
+        document.getElementById('testWithTokenBtn').addEventListener('click', async () => {
+            if (!csrfToken) {
+                document.getElementById('apiResult').innerHTML = `
+                    <p class="error">Please get a CSRF token first!</p>
+                `;
+                return;
+            }
+            
+            try {
+                // Create test data with proper Strapi format - data object is required
+                const testData = {
+                    data: {
+                        name: "Test User",
+                        email: "test@example.com",
+                        message: "This is a test message from CSRF test page",
+                        phone: "1234567890",
+                        privacy_check: true,
+                        campaign_check: true
+                    },
+                    csrf_token: csrfToken  // Include token outside data object too
+                };
+                
+                document.getElementById('apiResult').innerHTML = `
+                    <p class="info">Sending request with CSRF token...</p>
+                    <p>URL: ${API_BASE_URL}/api/yonga-contact-forms</p>
+                    <p>Token in header as X-CSRF-Token: ${csrfToken.substring(0, 10)}...</p>
+                    <p>Token in body as csrf_token</p>
+                    <p>Including all cookies with credentials:'include'</p>
+                    <pre>${JSON.stringify(testData, null, 2)}</pre>
+                `;
+                
+                const response = await fetch(`${API_BASE_URL}/api/yonga-contact-forms`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': csrfToken
+                    },
+                    credentials: 'include', // Important: Send cookies
+                    body: JSON.stringify(testData)
+                });
+                
+                const data = await response.json();
+                
+                document.getElementById('apiResult').innerHTML += `
+                    <p class="${response.ok ? 'success' : 'error'}">API request with token ${response.ok ? 'successful' : 'failed'}!</p>
+                    <p>Status: ${response.status} ${response.statusText}</p>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                document.getElementById('apiResult').innerHTML += `
+                    <p class="error">Error with API request: ${error.message}</p>
+                `;
+                console.error('Error:', error);
+            }
+        });
+        
+        // Test API without token
+        document.getElementById('testWithoutTokenBtn').addEventListener('click', async () => {
+            try {
+                // Create test data with minimum required fields
+                const testData = {
+                    data: {
+                        name: "Test User No Token",
+                        email: "test@example.com",
+                        message: "This is a test message without CSRF token",
+                        phone: "1234567890",
+                        privacy_check: true,
+                        campaign_check: true
+                    }
+                };
+                
+                const response = await fetch(`${API_BASE_URL}/api/yonga-contact-forms`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                        // No CSRF token header
+                    },
+                    credentials: 'include', // Important: Send cookies
+                    body: JSON.stringify(testData)
+                });
+                
+                const data = await response.json();
+                
+                document.getElementById('apiResult').innerHTML = `
+                    <p class="${response.ok ? 'success' : 'error'}">API request without token ${response.ok ? 'successful' : 'failed (expected)'}!</p>
+                    <p>Status: ${response.status} ${response.statusText}</p>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                document.getElementById('apiResult').innerHTML = `
+                    <p class="error">Error with API request: ${error.message}</p>
+                `;
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html> 

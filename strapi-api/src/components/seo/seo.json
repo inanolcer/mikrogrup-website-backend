@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_blocks_seos",
+  "info": {
+    "name": "Seo",
+    "icon": "allergies",
+    "displayName": "meta",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "shareImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "keywords": {
+      "type": "string"
+    },
+    "robots": {
+      "type": "enumeration",
+      "enum": [
+        "all",
+        "noindex",
+        "nofollow",
+        "noarchive",
+        "noimageindex",
+        "nosnippet"
+      ]
+    }
+  }
+} 

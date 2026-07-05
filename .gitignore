@@ -1,0 +1,16 @@
+# CMS
+db-data/
+cdn/
+
+# Docker
+.docker/
+.env
+.DS_Store
+
+yarn.lock
+node_modules/
+backup/
+backup/cdn/
+backup/workflows/
+Migrations/
+pass.md

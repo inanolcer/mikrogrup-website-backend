@@ -1,0 +1,47 @@
+{
+  "name": "strapi-api",
+  "version": "1.0.67",
+  "private": true,
+  "description": "Kozmoz Leads Management Strapi Application",
+  "author": "Inan Olcer Kozmoz",
+  "scripts": {
+    "build": "strapi build",
+    "deploy": "strapi deploy",
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "strapi": "strapi"
+  },
+  "dependencies": {
+    "@strapi/plugin-documentation": "5.46.1",
+    "@strapi/plugin-users-permissions": "5.46.1",
+    "@strapi/provider-email-amazon-ses": "5.46.1",
+    "@strapi/provider-email-nodemailer": "5.46.1",
+    "@strapi/provider-email-sendgrid": "5.46.1",
+    "@strapi/strapi": "5.46.1",
+    "pg": "8.8.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.0.0",
+    "styled-components": "^6.0.0",
+    "yup": "^1.7.0"
+  },
+  "devDependencies": {
+    "@types/minimatch": "3.0.5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/yup": "^0.32.0",
+    "baseline-browser-mapping": "latest",
+    "typescript": "^5"
+  },
+  "resolutions": {
+    "@types/minimatch": "3.0.5"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=24.x.x",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "uuid": "5abf15e9-b716-4d28-b260-42d2b76966e7"
+  }
+}

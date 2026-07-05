@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_layout_navbars",
+  "info": {
+    "name": "Navbar",
+    "displayName": "Navbar",
+    "icon": "map-signs",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "menu": {
+      "displayName": "Nav Item",
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.nav-item"
+    }
+  }
+} 

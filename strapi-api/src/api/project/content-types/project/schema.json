@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "credits": {
+      "type": "text"
+    },
+    "client": {
+      "type": "string"
+    },
+    "links": {
+      "type": "text"
+    },
+    "sections": {
+      "type": "dynamiczone",
+      "components": [
+        "blocks.rich-text",
+        "blocks.quote",
+        "blocks.logos",
+        "sections.section-title",
+        "sections.hero-simple",
+        "sections.features",
+        "sections.call-to-action",
+        "blocks.image",
+        "blocks.card",
+        "blocks.button"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "component": "seo.seo",
+      "repeatable": true
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "yonga_subscribe_forms",
+  "info": {
+    "singularName": "yonga-subscribe-form",
+    "pluralName": "yonga-subscribe-forms",
+    "displayName": "Yonga Subscribe Form"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "privacy_check": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "campaign_check": {
+      "type": "boolean"
+    },
+    "ip_address": {
+      "type": "string"
+    }
+  }
+}

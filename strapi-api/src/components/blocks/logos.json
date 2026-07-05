@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_blocks_logos",
+  "info": {
+    "name": "logos",
+    "displayName": "Logo",
+    "icon": "apple-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+} 

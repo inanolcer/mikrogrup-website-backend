@@ -1,0 +1,28 @@
+---
+description: Rules for bumping Strapi and official @strapi packages together in this repo
+---
+
+# Strapi version upgrades (this project)
+
+When changing Strapi versions in `strapi-api/package.json`:
+
+1. **Pin every official Strapi package to the same version** — never leave a mix (e.g. `@strapi/strapi` 5.40.0 with `@strapi/plugin-users-permissions` 5.33.4). Packages to keep aligned:
+   - `@strapi/strapi`
+   - `@strapi/plugin-documentation`
+   - `@strapi/plugin-users-permissions`
+   - `@strapi/provider-email-nodemailer`
+   - `@strapi/provider-email-amazon-ses`
+   - `@strapi/provider-email-sendgrid`
+   - Any other `@strapi/*` dependency the project adds later
+
+2. **Prefer exact versions** for `@strapi/*` (e.g. `5.46.1`) so upgrades are deliberate, unless the team explicitly uses a caret range across all of them.
+
+3. **Docker workflow** (compose service `lead-samplr-api`, app dir `/srv/app`, **yarn**):
+   - `package.json` is bind-mounted from `./strapi-api`; `node_modules` is an anonymous volume — run `yarn install` / `yarn add` **inside the container** after editing dependencies, or rebuild and refresh that volume as needed.
+   - Typical commands to suggest or document after a version bump:
+     - `docker exec -it lead-samplr-api sh -c "cd /srv/app && yarn install && yarn build"`
+     - `docker restart lead-samplr-api`
+
+4. **Remind the human**: database backup before major bumps; check [Strapi releases](https://github.com/strapi/strapi/releases) for breaking changes between versions.
+
+5. **Do not** change unrelated deps (e.g. `pg`, `yup`) unless release notes or compatibility require it.

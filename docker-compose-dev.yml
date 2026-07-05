@@ -1,0 +1,129 @@
+services:
+  # Database service ----------------------------------------------------------------
+  lead-samplr-db:
+    container_name: lead-samplr-db
+    image: postgres:16.3-alpine3.20
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+      - "5430:5432"
+    volumes:
+      # - ./devops/db-data:/var/lib/postgresql/data  
+      - db-data:/var/lib/postgresql/data
+      - ./restore.sh:/restore.sh
+      - ./backup/db/:/backup/db
+    networks: 
+      - kubuntu-net 
+      # - mochoa_pgadmin4-docker-extension-desktop-extension_default
+  # API Service ------------------------------------------------------------------------
+  lead-samplr-api:
+    container_name: lead-samplr-api
+    build:
+      context: ./
+      dockerfile: ./strapi-api/Dockerfile.dev
+    image: ${NAMESPACE}:dev
+    depends_on:
+      - lead-samplr-db
+    # Memory limits to prevent OOM kills
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+        reservations:
+          memory: 2G
+    volumes:
+      - ./.env:/srv/app/.env
+      - ./strapi-api:/srv/app
+      - ./cdn/uploads:/srv/app/public/uploads
+      - /srv/app/node_modules
+      # - ./devops/backup:/srv/app/public/backup
+      # - /srv/app/build
+      # - ./config:/srv/app/config
+      # - ./package.json:/srv/package.json
+      # - ./yarn.lock:/srv/yarn.lock
+      # - ./.env:/srv/app/.env
+    ports:
+      - "127.0.0.1:${PORT}:${PORT}"
+    networks:
+      - kubuntu-net
+    command : "yarn develop"
+    environment:
+      NODE_ENV: "development"
+      # STRAPI
+      HOST: "0.0.0.0"
+      PORT: ${PORT}
+      APP_KEYS: ${APP_KEYS}
+      API_TOKEN_SALT: ${API_TOKEN_SALT}
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT}
+      STRAPI_TELEMETRY_DISABLED: true
+      STRAPI_ADMIN_BACKEND_URL: ${STRAPI_ADMIN_BACKEND_URL}
+      # STRAPI_ADMIN_BACKEND_URL: http://localhost:1338
+      # DATABASE
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      # AWS S3
+      USE_AWS_S3: ${USE_AWS_S3}
+      AWS_BUCKET_NAME: ${AWS_BUCKET_NAME}
+      AWS_REGION: ${AWS_REGION}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_ACCESS_SECRET: ${AWS_ACCESS_SECRET}
+      AWS_BUCKET_URI: ${AWS_BUCKET_URI}
+      AWS_FOLDER: ${AWS_FOLDER}
+      AWS_ACL: ${AWS_ACL:-public-read}
+      AWS_SIGNED_URL_EXPIRES: ${AWS_SIGNED_URL_EXPIRES:-900}
+      # Cron Jobs
+      CRON_ENABLED: ${CRON_ENABLED}
+      #Email
+      # SENDGRID_API_KEY: ${SENDGRID_API_KEY}
+      SYS_MAIL_FROM: ${SYS_MAIL_FROM}
+      SYS_MAIL_REPLY_TO: ${SYS_MAIL_REPLY_TO}
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.leadsamplr.rule=Host(`${APP_HOST}`)
+      - traefik.http.routers.leadsamplr.entrypoints=websecure
+      - traefik.http.services.leadsamplr.loadbalancer.server.port=${PORT}
+      - traefik.http.routers.leadsamplr.tls=true
+      - traefik.http.routers.leadsamplr.tls.certresolver=production
+      - traefik.http.routers.leadsamplr.middlewares=leadsamplr@docker
+      - traefik.http.middlewares.leadsamplr.headers.SSLHost=samplr.local
+      - traefik.http.middlewares.leadsamplr.headers.SSLRedirect=true
+      - traefik.http.middlewares.leadsamplr.headers.STSSeconds=315360000
+      - traefik.http.middlewares.leadsamplr.headers.browserXSSFilter=true
+      - traefik.http.middlewares.leadsamplr.headers.contentTypeNosniff=true
+      - traefik.http.middlewares.leadsamplr.headers.forceSTSHeader=true
+      - traefik.http.middlewares.leadsamplr.headers.STSIncludeSubdomains=true
+      - traefik.http.middlewares.leadsamplr.headers.STSPreload=true
+# Volumnes --------------------------------------------------------------
+volumes:
+  db-data:
+# Networks --------------------------------------------------------------
+networks:
+  kubuntu-net:
+    external: true
+  # mochoa_pgadmin4-docker-extension-desktop-extension_default:
+  #   external: true
+  #   driver: bridge
+# End of file -------------------------------------------------------------
+
+  # # NGINX Proxy Server --------------------------------------------------------------
+  # kozmoz-nginx:
+  #   image: nginx:latest
+  #   container_name: kozmoz-nginx
+  #   volumes:
+  #     - ./docker/nginx-dev.conf:/etc/nginx/nginx.conf
+  #     - ./cdn/site:/usr/share/nginx/html
+  #     - ./cdn/uploads:/usr/share/nginx/uploads 
+  #   ports:
+  #     - "80:80"
+  #   depends_on:
+  #     - kozmoz-api
+  #   networks: 
+  #     - kozmoz

@@ -1,0 +1,39 @@
+# Creating multi-stage build for development
+FROM  node:24-alpine as build
+RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev vips-dev git > /dev/null 2>&1
+ARG NODE_ENV=development
+ARG STRAPI_ADMIN_BACKEND_URL
+ENV NODE_ENV=${NODE_ENV}
+ENV STRAPI_ADMIN_BACKEND_URL=${STRAPI_ADMIN_BACKEND_URL}
+
+WORKDIR /srv/app
+COPY ./strapi-api/package.json ./
+RUN yarn global add node-gyp
+RUN yarn config set network-timeout 1200000 -g && yarn install
+ENV PATH /srv/app/node_modules/.bin:$PATH
+COPY ./strapi-api/ ./
+
+# Ensure proper permissions for development
+RUN mkdir -p /srv/app/node_modules/.strapi/vite && \
+    mkdir -p /srv/.strapi && \
+    mkdir -p /srv/build && \
+    chown -R node:node /srv/app && \
+    chown -R node:node /srv/.strapi && \
+    chown -R node:node /srv/build
+
+USER node
+RUN yarn build --debug
+
+# Creating final image
+FROM node:24-alpine
+RUN apk add --no-cache vips-dev
+ARG NODE_ENV=development
+ENV NODE_ENV=${NODE_ENV}
+WORKDIR /srv/app
+COPY --from=build /srv/app/node_modules ./node_modules
+COPY --from=build /srv/app ./
+ENV PATH /srv/app/node_modules/.bin:$PATH
+
+EXPOSE 1337
+
+CMD ["yarn", "develop"]
