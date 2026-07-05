@@ -1,0 +1,110 @@
+{
+  "kind": "singleType",
+  "collectionName": "medya_pages",
+  "info": {
+    "singularName": "medya-page",
+    "pluralName": "medya-pages",
+    "displayName": "Medya Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.page-hero",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "newsHeading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-heading",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "pressKitPromo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.promo-banner",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "closingCta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.closing-cta",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "listHero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.page-hero",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "reviewHero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.page-hero",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "kitHero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.page-hero",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "kitDownloads": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.download",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "seo.seo",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}

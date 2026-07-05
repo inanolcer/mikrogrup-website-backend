@@ -1,0 +1,70 @@
+{
+  "kind": "singleType",
+  "collectionName": "hakkimizda_pages",
+  "info": {
+    "singularName": "hakkimizda-page",
+    "pluralName": "hakkimizda-pages",
+    "displayName": "Hakkimizda Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.page-hero",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.feature-split",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "sustainability": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.promo-banner",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "growth": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.feature-split",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "seo.seo",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}
