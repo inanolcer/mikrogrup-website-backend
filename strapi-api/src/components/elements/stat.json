@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_elements_stats",
+  "info": {
+    "displayName": "Stat",
+    "icon": "chartBubble",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    }
+  }
+}

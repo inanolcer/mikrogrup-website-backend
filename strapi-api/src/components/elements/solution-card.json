@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_elements_solution_cards",
+  "info": {
+    "displayName": "Solution Card",
+    "icon": "dashboard",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "tag": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "text"
+    },
+    "href": {
+      "type": "string"
+    },
+    "external": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

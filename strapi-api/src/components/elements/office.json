@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_elements_offices",
+  "info": {
+    "displayName": "Office",
+    "icon": "pinMap",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "city": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "address": {
+      "type": "text"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "mapUrl": {
+      "type": "string"
+    },
+    "mapLabel": {
+      "type": "string"
+    }
+  }
+}
