@@ -99,7 +99,12 @@
     "seo": {
       "type": "component",
       "component": "seo.seo",
-      "repeatable": false
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
