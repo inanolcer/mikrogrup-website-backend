@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_sections_page_heroes",
+  "info": {
+    "displayName": "Page Hero",
+    "icon": "layout",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "lede": {
+      "type": "text"
+    },
+    "media": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.media-item"
+    },
+    "align": {
+      "type": "enumeration",
+      "enum": [
+        "center",
+        "split"
+      ]
+    },
+    "dark": {
+      "type": "boolean",
+      "default": false
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.link"
+    }
+  }
+}

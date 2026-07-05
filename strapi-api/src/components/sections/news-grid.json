@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_news_grids",
+  "info": {
+    "displayName": "News Grid",
+    "icon": "layer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-heading"
+    },
+    "viewAll": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.link"
+    }
+  }
+}

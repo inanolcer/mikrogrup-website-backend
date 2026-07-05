@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_media_card_grids",
+  "info": {
+    "displayName": "Media Card Grid",
+    "icon": "picture",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-heading"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.media-card"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_sections_section_headings",
+  "info": {
+    "displayName": "Section Heading",
+    "icon": "heading",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "lede": {
+      "type": "text"
+    },
+    "align": {
+      "type": "enumeration",
+      "enum": [
+        "center",
+        "left"
+      ]
+    }
+  }
+}
