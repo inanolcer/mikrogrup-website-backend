@@ -82,7 +82,10 @@
         "sections.media-card-grid",
         "sections.leadership-section",
         "legal.section",
-        "sections.section-heading"
+        "sections.section-heading",
+        "sections.office-grid",
+        "sections.value-grid",
+        "sections.lead-form"
       ]
     },
     "cover": {

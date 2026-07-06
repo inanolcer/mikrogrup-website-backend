@@ -16,6 +16,11 @@
       "type": "component",
       "repeatable": false,
       "component": "elements.link"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.news-item"
     }
   }
 }
