@@ -159,6 +159,21 @@ export interface ElementsMediaItem extends Struct.ComponentSchema {
   };
 }
 
+export interface ElementsNewsItem extends Struct.ComponentSchema {
+  collectionName: 'components_elements_news_items';
+  info: {
+    description: '';
+    displayName: 'News Item';
+    icon: 'calendar';
+  };
+  attributes: {
+    date: Schema.Attribute.String;
+    external: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    href: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface ElementsOffice extends Struct.ComponentSchema {
   collectionName: 'components_elements_offices';
   info: {
@@ -451,6 +466,24 @@ export interface SectionsHeroSimple extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsLeadForm extends Struct.ComponentSchema {
+  collectionName: 'components_sections_lead_forms';
+  info: {
+    description: '';
+    displayName: 'Lead Form';
+    icon: 'envelope';
+  };
+  attributes: {
+    anchorId: Schema.Attribute.String;
+    fields: Schema.Attribute.JSON;
+    heading: Schema.Attribute.String;
+    lede: Schema.Attribute.Text;
+    submitLabel: Schema.Attribute.String;
+    withMarketingConsent: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
+  };
+}
+
 export interface SectionsLeadershipSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_leadership_sections';
   info: {
@@ -486,7 +519,20 @@ export interface SectionsNewsGrid extends Struct.ComponentSchema {
   };
   attributes: {
     heading: Schema.Attribute.Component<'sections.section-heading', false>;
+    items: Schema.Attribute.Component<'elements.news-item', true>;
     viewAll: Schema.Attribute.Component<'elements.link', false>;
+  };
+}
+
+export interface SectionsOfficeGrid extends Struct.ComponentSchema {
+  collectionName: 'components_sections_office_grids';
+  info: {
+    description: '';
+    displayName: 'Office Grid';
+    icon: 'pinMap';
+  };
+  attributes: {
+    offices: Schema.Attribute.Component<'elements.office', true>;
   };
 }
 
@@ -608,6 +654,19 @@ export interface SectionsStatsBar extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsValueGrid extends Struct.ComponentSchema {
+  collectionName: 'components_sections_value_grids';
+  info: {
+    description: '';
+    displayName: 'Value Grid';
+    icon: 'dashboard';
+  };
+  attributes: {
+    items: Schema.Attribute.Component<'elements.value-card', true>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SeoSeo extends Struct.ComponentSchema {
   collectionName: 'components_blocks_seos';
   info: {
@@ -642,6 +701,7 @@ declare module '@strapi/strapi' {
       'elements.link': ElementsLink;
       'elements.media-card': ElementsMediaCard;
       'elements.media-item': ElementsMediaItem;
+      'elements.news-item': ElementsNewsItem;
       'elements.office': ElementsOffice;
       'elements.phase': ElementsPhase;
       'elements.pillar': ElementsPillar;
@@ -661,9 +721,11 @@ declare module '@strapi/strapi' {
       'sections.glass-cta': SectionsGlassCta;
       'sections.hero': SectionsHero;
       'sections.hero-simple': SectionsHeroSimple;
+      'sections.lead-form': SectionsLeadForm;
       'sections.leadership-section': SectionsLeadershipSection;
       'sections.media-card-grid': SectionsMediaCardGrid;
       'sections.news-grid': SectionsNewsGrid;
+      'sections.office-grid': SectionsOfficeGrid;
       'sections.page-hero': SectionsPageHero;
       'sections.phase-timeline': SectionsPhaseTimeline;
       'sections.pillar-grid': SectionsPillarGrid;
@@ -672,6 +734,7 @@ declare module '@strapi/strapi' {
       'sections.section-title': SectionsSectionTitle;
       'sections.solutions-grid': SectionsSolutionsGrid;
       'sections.stats-bar': SectionsStatsBar;
+      'sections.value-grid': SectionsValueGrid;
       'seo.seo': SeoSeo;
     }
   }
