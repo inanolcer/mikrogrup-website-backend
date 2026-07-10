@@ -16,105 +16,59 @@
     }
   },
   "attributes": {
-    "hero": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.hero",
+    "title": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
     },
-    "stats": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.stats-bar",
+    "sections": {
+      "type": "dynamiczone",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
-    },
-    "featureSolutions": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.feature-split",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "featureMission": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.feature-split",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "solutionsGrid": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.solutions-grid",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "promo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.promo-banner",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "pillars": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.pillar-grid",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "news": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.news-grid",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "closingCta": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.closing-cta",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+      },
+      "components": [
+        "blocks.rich-text",
+        "sections.hero-simple",
+        "sections.features",
+        "blocks.quote",
+        "blocks.image",
+        "sections.section-title",
+        "blocks.logos",
+        "blocks.card",
+        "blocks.button",
+        "sections.call-to-action",
+        "sections.hero",
+        "sections.page-hero",
+        "sections.stats-bar",
+        "sections.feature-split",
+        "sections.solutions-grid",
+        "sections.promo-banner",
+        "sections.pillar-grid",
+        "sections.news-grid",
+        "sections.glass-cta",
+        "sections.phase-timeline",
+        "sections.media-card-grid",
+        "sections.leadership-section",
+        "sections.section-heading",
+        "sections.office-grid",
+        "sections.value-grid",
+        "sections.lead-form"
+      ]
     },
     "seo": {
       "type": "component",
-      "repeatable": false,
-      "component": "seo.seo",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "component": "seo.seo",
+      "repeatable": false
     }
   }
 }

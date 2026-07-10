@@ -7,13 +7,10 @@
   },
   "options": {},
   "attributes": {
-    "eyebrow": {
-      "type": "string"
-    },
     "title": {
       "type": "string"
     },
-    "lede": {
+    "description": {
       "type": "text"
     },
     "align": {

@@ -7,30 +7,27 @@
   },
   "options": {},
   "attributes": {
-    "eyebrow": {
-      "type": "string"
-    },
     "title": {
       "type": "string"
     },
     "body": {
-      "type": "text"
+      "type": "richtext"
     },
-    "paragraphs": {
-      "type": "json"
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     },
-    "bullets": {
-      "type": "json"
+    "imageAlt": {
+      "type": "string"
     },
     "cta": {
       "type": "component",
       "repeatable": false,
       "component": "elements.link"
-    },
-    "media": {
-      "type": "component",
-      "repeatable": false,
-      "component": "elements.media-item"
     },
     "reverse": {
       "type": "boolean",

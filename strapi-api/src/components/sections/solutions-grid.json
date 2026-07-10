@@ -16,9 +16,9 @@
       "component": "sections.section-heading"
     },
     "items": {
-      "type": "component",
-      "repeatable": true,
-      "component": "elements.solution-card"
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product"
     }
   }
 }

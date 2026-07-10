@@ -373,20 +373,6 @@ export interface SectionsCallToAction extends Struct.ComponentSchema {
   };
 }
 
-export interface SectionsClosingCta extends Struct.ComponentSchema {
-  collectionName: 'components_sections_closing_ctas';
-  info: {
-    description: '';
-    displayName: 'Closing CTA';
-    icon: 'bullhorn';
-  };
-  attributes: {
-    body: Schema.Attribute.Text;
-    cta: Schema.Attribute.Component<'elements.link', false>;
-    title: Schema.Attribute.String;
-  };
-}
-
 export interface SectionsFeatureSplit extends Struct.ComponentSchema {
   collectionName: 'components_sections_feature_splits';
   info: {
@@ -395,12 +381,10 @@ export interface SectionsFeatureSplit extends Struct.ComponentSchema {
     icon: 'layer';
   };
   attributes: {
-    body: Schema.Attribute.Text;
-    bullets: Schema.Attribute.JSON;
+    body: Schema.Attribute.RichText;
     cta: Schema.Attribute.Component<'elements.link', false>;
-    eyebrow: Schema.Attribute.String;
-    media: Schema.Attribute.Component<'elements.media-item', false>;
-    paragraphs: Schema.Attribute.JSON;
+    image: Schema.Attribute.Media<'images'>;
+    imageAlt: Schema.Attribute.String;
     reverse: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     title: Schema.Attribute.String;
   };
@@ -605,8 +589,7 @@ export interface SectionsSectionHeading extends Struct.ComponentSchema {
   };
   attributes: {
     align: Schema.Attribute.Enumeration<['center', 'left']>;
-    eyebrow: Schema.Attribute.String;
-    lede: Schema.Attribute.Text;
+    description: Schema.Attribute.Text;
     title: Schema.Attribute.String;
   };
 }
@@ -636,7 +619,7 @@ export interface SectionsSolutionsGrid extends Struct.ComponentSchema {
   attributes: {
     anchorId: Schema.Attribute.String;
     heading: Schema.Attribute.Component<'sections.section-heading', false>;
-    items: Schema.Attribute.Component<'elements.solution-card', true>;
+    items: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
   };
 }
 
@@ -715,7 +698,6 @@ declare module '@strapi/strapi' {
       'navigation.navbar': NavigationNavbar;
       'navigation.submenu': NavigationSubmenu;
       'sections.call-to-action': SectionsCallToAction;
-      'sections.closing-cta': SectionsClosingCta;
       'sections.feature-split': SectionsFeatureSplit;
       'sections.features': SectionsFeatures;
       'sections.glass-cta': SectionsGlassCta;
