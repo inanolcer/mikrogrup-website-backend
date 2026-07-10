@@ -47,6 +47,8 @@
         "sections.stats-bar",
         "sections.feature-split",
         "sections.solutions-grid",
+        "sections.companies-grid",
+        "sections.products-grid",
         "sections.promo-banner",
         "sections.pillar-grid",
         "sections.news-grid",

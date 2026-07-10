@@ -19,7 +19,8 @@ integrates with Salesforce CRM. Deployed with Docker Compose behind Traefik.
     `cron-tasks.ts`, `csrf-trusted-origins.ts`, `admin.ts`, `api.ts`.
 - `docker-compose-dev.yml` / `docker-compose-prod.yml` — services: `db` (Postgres 16),
   `nginx`/Traefik, and the Strapi API.
-- `Docs/`, `devops/`, `backup/` — deployment notes, scripts, DB dumps.
+- `Docs/` — project docs; see `04-Local-Install.md` (setup) and `03-Install-Strapi-CLI.md` (CLI reference).
+- `devops/`, `backup/` — deployment scripts, DB dumps.
 
 ## Tech stack
 
@@ -30,15 +31,49 @@ integrates with Salesforce CRM. Deployed with Docker Compose behind Traefik.
 ## Working in the container
 
 `docker-compose` bind-mounts `./strapi-api` and uses an **anonymous volume** for
-`node_modules`. Run installs/builds **inside** the container, not on the host:
+`node_modules`. Run installs, builds, and **Strapi CLI commands inside the container**, not on the host.
+
+| Environment | API container | DB container | Compose file |
+|---|---|---|---|
+| Dev | `teamsystem-strapi-api` | `teamsystem-strapi-db` | `docker-compose-dev.yml` |
+| Prod | `lead-samplr-api` | `lead-samplr-db` | `docker-compose-prod.yml` |
+
+App path in both: `/srv/app`. Dev start helper: `bash build-dev.sh` (add `fresh` to rebuild from scratch).
 
 ```bash
-docker exec -it lead-samplr-api sh -c "cd /srv/app && yarn install && yarn build"
-docker restart lead-samplr-api
+docker exec -it teamsystem-strapi-api sh -c "cd /srv/app && yarn install && yarn build"
+docker restart teamsystem-strapi-api
 ```
 
-- Prod container name: `lead-samplr-api`; app path: `/srv/app`.
-- Dev build helper: `bash build-dev.sh` (add `fresh` to rebuild from scratch).
+## Strapi CLI
+
+Use the project-local CLI via `yarn strapi` — never install Strapi globally. Full command reference: `Docs/03-Install-Strapi-CLI.md`.
+
+**Prefer running CLI inside the container** (shares the same `node_modules` volume as the running server):
+
+```bash
+# General pattern (dev)
+docker exec -it teamsystem-strapi-api sh -c "cd /srv/app && yarn strapi <command>"
+
+# Prod — swap container name
+docker exec -it lead-samplr-api sh -c "cd /srv/app && yarn strapi <command>"
+```
+
+Run on the host (`cd strapi-api && yarn strapi <command>`) only for read-only inspection when the container is stopped.
+
+### When to use the CLI
+
+| Task | Command |
+|---|---|
+| After schema/component changes | `yarn strapi ts:generate-types` |
+| After `package.json` changes | `yarn install && yarn build` |
+| Inspect content-types, routes, policies | `yarn strapi content-types:list`, `routes:list`, `policies:list` |
+| Create/reset admin user | `yarn strapi admin:create-user`, `admin:reset-user-password` |
+| Export/import/transfer data | `yarn strapi export`, `import`, `transfer` |
+| Debug in REPL | `yarn strapi console` |
+| Scaffold code (controllers, services) | `yarn strapi generate` |
+
+After `ts:generate-types` or `generate`, restart the API container. For local setup and access URLs, see `Docs/04-Local-Install.md`.
 
 ## Conventions
 

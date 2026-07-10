@@ -815,6 +815,8 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
         'sections.stats-bar',
         'sections.feature-split',
         'sections.solutions-grid',
+        'sections.companies-grid',
+        'sections.products-grid',
         'sections.promo-banner',
         'sections.pillar-grid',
         'sections.news-grid',
@@ -938,6 +940,8 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.stats-bar',
         'sections.feature-split',
         'sections.solutions-grid',
+        'sections.companies-grid',
+        'sections.products-grid',
         'sections.promo-banner',
         'sections.pillar-grid',
         'sections.news-grid',
@@ -1218,7 +1222,7 @@ export interface ApiSolutionSolution extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::solution.solution'
     >;
-    product: Schema.Attribute.Relation<'oneToOne', 'api::product.product'>;
+    products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &

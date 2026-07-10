@@ -1,8 +1,8 @@
 {
-  "collectionName": "components_sections_solutions_grids",
+  "collectionName": "components_sections_products_grids",
   "info": {
-    "displayName": "Solutions Grid",
-    "icon": "dashboard",
+    "displayName": "Products Grid",
+    "icon": "grid",
     "description": ""
   },
   "options": {},
@@ -15,10 +15,10 @@
       "repeatable": false,
       "component": "sections.section-heading"
     },
-    "solutions": {
+    "products": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::solution.solution"
+      "target": "api::product.product"
     }
   }
 }

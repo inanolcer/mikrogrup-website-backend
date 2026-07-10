@@ -373,6 +373,20 @@ export interface SectionsCallToAction extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsCompaniesGrid extends Struct.ComponentSchema {
+  collectionName: 'components_sections_companies_grids';
+  info: {
+    description: '';
+    displayName: 'Companies Grid';
+    icon: 'apps';
+  };
+  attributes: {
+    anchorId: Schema.Attribute.String;
+    companies: Schema.Attribute.Relation<'oneToMany', 'api::company.company'>;
+    heading: Schema.Attribute.Component<'sections.section-heading', false>;
+  };
+}
+
 export interface SectionsFeatureSplit extends Struct.ComponentSchema {
   collectionName: 'components_sections_feature_splits';
   info: {
@@ -564,6 +578,20 @@ export interface SectionsPillarGrid extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsProductsGrid extends Struct.ComponentSchema {
+  collectionName: 'components_sections_products_grids';
+  info: {
+    description: '';
+    displayName: 'Products Grid';
+    icon: 'grid';
+  };
+  attributes: {
+    anchorId: Schema.Attribute.String;
+    heading: Schema.Attribute.Component<'sections.section-heading', false>;
+    products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
+  };
+}
+
 export interface SectionsPromoBanner extends Struct.ComponentSchema {
   collectionName: 'components_sections_promo_banners';
   info: {
@@ -619,7 +647,7 @@ export interface SectionsSolutionsGrid extends Struct.ComponentSchema {
   attributes: {
     anchorId: Schema.Attribute.String;
     heading: Schema.Attribute.Component<'sections.section-heading', false>;
-    items: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
+    solutions: Schema.Attribute.Relation<'oneToMany', 'api::solution.solution'>;
   };
 }
 
@@ -698,6 +726,7 @@ declare module '@strapi/strapi' {
       'navigation.navbar': NavigationNavbar;
       'navigation.submenu': NavigationSubmenu;
       'sections.call-to-action': SectionsCallToAction;
+      'sections.companies-grid': SectionsCompaniesGrid;
       'sections.feature-split': SectionsFeatureSplit;
       'sections.features': SectionsFeatures;
       'sections.glass-cta': SectionsGlassCta;
@@ -711,6 +740,7 @@ declare module '@strapi/strapi' {
       'sections.page-hero': SectionsPageHero;
       'sections.phase-timeline': SectionsPhaseTimeline;
       'sections.pillar-grid': SectionsPillarGrid;
+      'sections.products-grid': SectionsProductsGrid;
       'sections.promo-banner': SectionsPromoBanner;
       'sections.section-heading': SectionsSectionHeading;
       'sections.section-title': SectionsSectionTitle;
