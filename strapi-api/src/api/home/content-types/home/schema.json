@@ -1,10 +1,10 @@
 {
-  "kind": "collectionType",
-  "collectionName": "pages",
+  "kind": "singleType",
+  "collectionName": "homes",
   "info": {
-    "singularName": "page",
-    "pluralName": "pages",
-    "displayName": "Page",
+    "singularName": "home",
+    "pluralName": "homes",
+    "displayName": "Home",
     "description": ""
   },
   "options": {
@@ -18,37 +18,11 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
-    },
-    "slug": {
-      "type": "string",
-      "required": true,
-      "unique": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "description": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "template": {
-      "type": "enumeration",
-      "enum": [
-        "default"
-      ],
-      "default": "default"
     },
     "sections": {
       "type": "dynamiczone",
@@ -80,36 +54,21 @@
         "sections.phase-timeline",
         "sections.media-card-grid",
         "sections.leadership-section",
-        "legal.section",
         "sections.section-heading",
         "sections.office-grid",
         "sections.value-grid",
         "sections.lead-form"
       ]
     },
-    "cover": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
-    },
-    "author": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::author.author"
-    },
     "seo": {
       "type": "component",
-      "component": "seo.seo",
-      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "component": "seo.seo",
+      "repeatable": false
     }
   }
 }

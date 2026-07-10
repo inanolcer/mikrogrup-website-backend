@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_sections_promo_banners",
+  "info": {
+    "displayName": "Promo Banner",
+    "icon": "bullhorn",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "text"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.link"
+    },
+    "media": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.media-item"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "default",
+        "soft"
+      ]
+    }
+  }
+}

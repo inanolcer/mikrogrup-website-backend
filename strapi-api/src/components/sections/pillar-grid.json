@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_sections_pillar_grids",
+  "info": {
+    "displayName": "Pillar Grid",
+    "icon": "layer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-heading"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.pillar"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "centered",
+        "card"
+      ]
+    }
+  }
+}

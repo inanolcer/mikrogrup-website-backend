@@ -525,101 +525,6 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiBetikOnboardingFormBetikOnboardingForm
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'betik_onboarding_forms';
-  info: {
-    displayName: 'Betik Onboarding Form';
-    pluralName: 'betik-onboarding-forms';
-    singularName: 'betik-onboarding-form';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    address: Schema.Attribute.Text;
-    campaign_check: Schema.Attribute.Boolean;
-    contact_email: Schema.Attribute.Email;
-    contact_gsm: Schema.Attribute.String;
-    contact_name: Schema.Attribute.String;
-    contact_surname: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    domain: Schema.Attribute.String;
-    footer_description: Schema.Attribute.Text;
-    ip_address: Schema.Attribute.String;
-    is_domain_owner: Schema.Attribute.Boolean &
-      Schema.Attribute.DefaultTo<false>;
-    links: Schema.Attribute.Component<'forms.title-url-link', true>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::betik-onboarding-form.betik-onboarding-form'
-    > &
-      Schema.Attribute.Private;
-    logo_url: Schema.Attribute.String;
-    maintenance_check: Schema.Attribute.Boolean;
-    map_url: Schema.Attribute.String;
-    notes: Schema.Attribute.Text;
-    privacy_check: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
-    profile_description: Schema.Attribute.Text;
-    profile_email: Schema.Attribute.Email;
-    profile_gsm: Schema.Attribute.String;
-    profile_name: Schema.Attribute.String & Schema.Attribute.Required;
-    profile_phone: Schema.Attribute.String;
-    profile_picture_url: Schema.Attribute.String;
-    profile_subtitle: Schema.Attribute.String;
-    profile_whatsapp: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    social_links: Schema.Attribute.Component<'forms.title-url-link', true>;
-    syncResponse: Schema.Attribute.String;
-    syncStatus: Schema.Attribute.String & Schema.Attribute.DefaultTo<'pending'>;
-    template_id: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiBetikSubscribeFormBetikSubscribeForm
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'betik_subscribe_forms';
-  info: {
-    displayName: 'Betik Subscribe Form';
-    pluralName: 'betik-subscribe-forms';
-    singularName: 'betik-subscribe-form';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    campaign_check: Schema.Attribute.Boolean;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.Email & Schema.Attribute.Required;
-    fullname: Schema.Attribute.String;
-    ip_address: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::betik-subscribe-form.betik-subscribe-form'
-    > &
-      Schema.Attribute.Private;
-    phone: Schema.Attribute.String;
-    privacy_check: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
@@ -652,6 +557,61 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCompanyCompany extends Struct.CollectionTypeSchema {
+  collectionName: 'companies';
+  info: {
+    description: 'Group companies shown across the site (e.g. brand/partner logos)';
+    displayName: 'Company';
+    pluralName: 'companies';
+    singularName: 'company';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    link: Schema.Attribute.Component<'elements.link', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::company.company'
+    >;
+    logo: Schema.Attribute.Media<'images'>;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
   collectionName: 'faqs';
   info: {
@@ -673,6 +633,45 @@ export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     question: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiFooterNavigationFooterNavigation
+  extends Struct.SingleTypeSchema {
+  collectionName: 'footer_navigations';
+  info: {
+    description: '';
+    displayName: 'Footer Navigation';
+    pluralName: 'footer-navigations';
+    singularName: 'footer-navigation';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    items: Schema.Attribute.Component<'navigation.nav-item', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::footer-navigation.footer-navigation'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -776,35 +775,115 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiKozmozContactFormKozmozContactForm
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'kozmoz_contact_forms';
+export interface ApiHomeHome extends Struct.SingleTypeSchema {
+  collectionName: 'homes';
   info: {
-    displayName: 'Kozmoz Contact Form';
-    pluralName: 'kozmoz-contact-forms';
-    singularName: 'kozmoz-contact-form';
+    description: '';
+    displayName: 'Home';
+    pluralName: 'homes';
+    singularName: 'home';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    campaign_consent: Schema.Attribute.Boolean & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email & Schema.Attribute.Required;
-    fullname: Schema.Attribute.String & Schema.Attribute.Required;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::home.home'>;
+    publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'blocks.rich-text',
+        'sections.hero-simple',
+        'sections.features',
+        'blocks.quote',
+        'blocks.image',
+        'sections.section-title',
+        'blocks.logos',
+        'blocks.card',
+        'blocks.button',
+        'sections.call-to-action',
+        'sections.hero',
+        'sections.page-hero',
+        'sections.stats-bar',
+        'sections.feature-split',
+        'sections.solutions-grid',
+        'sections.promo-banner',
+        'sections.pillar-grid',
+        'sections.news-grid',
+        'sections.glass-cta',
+        'sections.phase-timeline',
+        'sections.media-card-grid',
+        'sections.leadership-section',
+        'sections.section-heading',
+        'sections.office-grid',
+        'sections.value-grid',
+        'sections.lead-form',
+      ]
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Schema.Attribute.Component<'seo.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMainNavigationMainNavigation
+  extends Struct.SingleTypeSchema {
+  collectionName: 'main_navigations';
+  info: {
+    description: '';
+    displayName: 'Main Navigation';
+    pluralName: 'main-navigations';
+    singularName: 'main-navigation';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    items: Schema.Attribute.Component<'navigation.nav-item', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::kozmoz-contact-form.kozmoz-contact-form'
-    > &
-      Schema.Attribute.Private;
-    message: Schema.Attribute.Text & Schema.Attribute.Required;
-    phone: Schema.Attribute.String;
-    privacy_consent: Schema.Attribute.Boolean & Schema.Attribute.Required;
+      'api::main-navigation.main-navigation'
+    >;
     publishedAt: Schema.Attribute.DateTime;
-    subject: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -822,16 +901,25 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     author: Schema.Attribute.Relation<'oneToOne', 'api::author.author'>;
     cover: Schema.Attribute.Media<'images' | 'files'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::page.page'> &
-      Schema.Attribute.Private;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>;
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
@@ -845,49 +933,53 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'blocks.card',
         'blocks.button',
         'sections.call-to-action',
+        'sections.hero',
+        'sections.page-hero',
+        'sections.stats-bar',
+        'sections.feature-split',
+        'sections.solutions-grid',
+        'sections.promo-banner',
+        'sections.pillar-grid',
+        'sections.news-grid',
+        'sections.glass-cta',
+        'sections.phase-timeline',
+        'sections.media-card-grid',
+        'sections.leadership-section',
+        'legal.section',
+        'sections.section-heading',
+        'sections.office-grid',
+        'sections.value-grid',
+        'sections.lead-form',
       ]
-    >;
-    seo: Schema.Attribute.Component<'seo.seo', false>;
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Schema.Attribute.Component<'seo.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     slug: Schema.Attribute.String &
       Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiPrintsgramSubscribeFormPrintsgramSubscribeForm
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'printsgram_subscribe_forms';
-  info: {
-    displayName: 'Printsgram Subscribe Form';
-    pluralName: 'printsgram-subscribe-forms';
-    singularName: 'printsgram-subscribe-form';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    campaign_check: Schema.Attribute.Boolean;
-    country: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.Email & Schema.Attribute.Required;
-    fullname: Schema.Attribute.String;
-    ip_address: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::printsgram-subscribe-form.printsgram-subscribe-form'
-    > &
-      Schema.Attribute.Private;
-    privacy_check: Schema.Attribute.Boolean &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    template: Schema.Attribute.Enumeration<['default']> &
+      Schema.Attribute.DefaultTo<'default'>;
+    title: Schema.Attribute.String &
       Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
-    publishedAt: Schema.Attribute.DateTime;
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -906,6 +998,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    company: Schema.Attribute.Relation<'manyToOne', 'api::company.company'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -992,134 +1085,101 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiRedirectRedirect extends Struct.CollectionTypeSchema {
-  collectionName: 'redirects';
+export interface ApiReportReport extends Struct.CollectionTypeSchema {
+  collectionName: 'reports';
   info: {
-    description: 'URL redirect rules';
-    displayName: 'Redirect';
-    pluralName: 'redirects';
-    singularName: 'redirect';
+    description: 'Financial and sustainability reports, distinguished by report type';
+    displayName: 'Report';
+    pluralName: 'reports';
+    singularName: 'report';
   };
   options: {
     draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    domain: Schema.Attribute.Enumeration<
-      ['kozmoz.io', 'samplr.io', 'yonga.io']
+    description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    file: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::report.report'>;
+    publishedAt: Schema.Attribute.DateTime;
+    reportType: Schema.Attribute.Enumeration<['financial', 'sustainability']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'financial'>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSiteSettingsSiteSettings extends Struct.SingleTypeSchema {
+  collectionName: 'site_settingss';
+  info: {
+    description: '';
+    displayName: 'Site Settings';
+    pluralName: 'site-settingss';
+    singularName: 'site-settings';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    address: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    announcement: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    contactEmail: Schema.Attribute.Email &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    contactPhone: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::site-settings.site-settings'
     >;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::redirect.redirect'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    regex: Schema.Attribute.String;
-    source: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    target: Schema.Attribute.String & Schema.Attribute.Required;
-    type: Schema.Attribute.Enumeration<['permanent', 'temporary']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'permanent'>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiWtoCompanyFormWtoCompanyForm
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'wto_company_forms';
-  info: {
-    displayName: 'Wto company Form';
-    pluralName: 'wto-company-forms';
-    singularName: 'wto-company-form';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    address: Schema.Attribute.Text;
-    backlink_urls: Schema.Attribute.Text;
-    campaign_check: Schema.Attribute.Boolean;
-    city: Schema.Attribute.String;
-    company_name: Schema.Attribute.String & Schema.Attribute.Required;
-    contact_person: Schema.Attribute.String;
-    country: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    departures: Schema.Attribute.Text;
-    description: Schema.Attribute.Text;
-    destinations: Schema.Attribute.Text;
-    email: Schema.Attribute.Email;
-    facebook_url: Schema.Attribute.String;
-    founded_in: Schema.Attribute.String;
-    instagram_url: Schema.Attribute.String;
-    ip_address: Schema.Attribute.String;
-    linkedin_url: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::wto-company-form.wto-company-form'
-    > &
-      Schema.Attribute.Private;
-    logo_url: Schema.Attribute.String;
-    mobile: Schema.Attribute.String;
-    notes: Schema.Attribute.Text;
-    phone: Schema.Attribute.String;
-    privacy_check: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
-    publishedAt: Schema.Attribute.DateTime;
-    region: Schema.Attribute.String;
-    services: Schema.Attribute.Text;
-    state: Schema.Attribute.String;
-    syncResponse: Schema.Attribute.String;
-    syncStatus: Schema.Attribute.String & Schema.Attribute.DefaultTo<'pending'>;
-    twitter_url: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    website_url: Schema.Attribute.String;
-    youtube_url: Schema.Attribute.String;
-    zipcode: Schema.Attribute.String;
-  };
-}
-
-export interface ApiWtoSubscribeFormWtoSubscribeForm
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'wto_subscribe_forms';
-  info: {
-    displayName: 'Wto Subscribe Form';
-    pluralName: 'wto-subscribe-forms';
-    singularName: 'wto-subscribe-form';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    campaign_check: Schema.Attribute.Boolean;
-    country: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.Email & Schema.Attribute.Required;
-    fullname: Schema.Attribute.String;
-    ip_address: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::wto-subscribe-form.wto-subscribe-form'
-    > &
-      Schema.Attribute.Private;
-    privacy_check: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1127,36 +1187,46 @@ export interface ApiWtoSubscribeFormWtoSubscribeForm
   };
 }
 
-export interface ApiYongaSubscribeFormYongaSubscribeForm
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'yonga_subscribe_forms';
+export interface ApiSolutionSolution extends Struct.CollectionTypeSchema {
+  collectionName: 'solutions';
   info: {
-    displayName: 'Yonga Subscribe Form';
-    pluralName: 'yonga-subscribe-forms';
-    singularName: 'yonga-subscribe-form';
+    description: '';
+    displayName: 'Solution';
+    pluralName: 'solutions';
+    singularName: 'solution';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    campaign_check: Schema.Attribute.Boolean;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email & Schema.Attribute.Required;
-    ip_address: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::yonga-subscribe-form.yonga-subscribe-form'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    phone: Schema.Attribute.String;
-    privacy_check: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
+      'api::solution.solution'
+    >;
+    product: Schema.Attribute.Relation<'oneToOne', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1676,20 +1746,19 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
-      'api::betik-onboarding-form.betik-onboarding-form': ApiBetikOnboardingFormBetikOnboardingForm;
-      'api::betik-subscribe-form.betik-subscribe-form': ApiBetikSubscribeFormBetikSubscribeForm;
       'api::category.category': ApiCategoryCategory;
+      'api::company.company': ApiCompanyCompany;
       'api::faq.faq': ApiFaqFaq;
+      'api::footer-navigation.footer-navigation': ApiFooterNavigationFooterNavigation;
       'api::global.global': ApiGlobalGlobal;
-      'api::kozmoz-contact-form.kozmoz-contact-form': ApiKozmozContactFormKozmozContactForm;
+      'api::home.home': ApiHomeHome;
+      'api::main-navigation.main-navigation': ApiMainNavigationMainNavigation;
       'api::page.page': ApiPagePage;
-      'api::printsgram-subscribe-form.printsgram-subscribe-form': ApiPrintsgramSubscribeFormPrintsgramSubscribeForm;
       'api::product.product': ApiProductProduct;
       'api::project.project': ApiProjectProject;
-      'api::redirect.redirect': ApiRedirectRedirect;
-      'api::wto-company-form.wto-company-form': ApiWtoCompanyFormWtoCompanyForm;
-      'api::wto-subscribe-form.wto-subscribe-form': ApiWtoSubscribeFormWtoSubscribeForm;
-      'api::yonga-subscribe-form.yonga-subscribe-form': ApiYongaSubscribeFormYongaSubscribeForm;
+      'api::report.report': ApiReportReport;
+      'api::site-settings.site-settings': ApiSiteSettingsSiteSettings;
+      'api::solution.solution': ApiSolutionSolution;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

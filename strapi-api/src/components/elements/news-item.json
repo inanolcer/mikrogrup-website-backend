@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_elements_news_items",
+  "info": {
+    "displayName": "News Item",
+    "icon": "calendar",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    },
+    "external": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

@@ -12,7 +12,7 @@ export default (config: any) => {
     server: {
       ...config.server,
       allowedHosts: [
-        'lead.samplr.local',
+        'website-api.teamsystem.local',
         'localhost',
         '127.0.0.1'
       ],

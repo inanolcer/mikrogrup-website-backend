@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_sections_solutions_grids",
+  "info": {
+    "displayName": "Solutions Grid",
+    "icon": "dashboard",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "anchorId": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-heading"
+    },
+    "items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product"
+    }
+  }
+}

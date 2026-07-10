@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_sections_lead_forms",
+  "info": {
+    "displayName": "Lead Form",
+    "icon": "envelope",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "lede": {
+      "type": "text"
+    },
+    "submitLabel": {
+      "type": "string"
+    },
+    "withMarketingConsent": {
+      "type": "boolean",
+      "default": false
+    },
+    "anchorId": {
+      "type": "string"
+    },
+    "fields": {
+      "type": "json"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_stats_bars",
+  "info": {
+    "displayName": "Stats Bar",
+    "icon": "chartBubble",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "text"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.stat"
+    }
+  }
+}

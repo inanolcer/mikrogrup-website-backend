@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_phase_timelines",
+  "info": {
+    "displayName": "Phase Timeline",
+    "icon": "arrowRight",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-heading"
+    },
+    "phases": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.phase"
+    }
+  }
+}

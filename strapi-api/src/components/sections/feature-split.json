@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_sections_feature_splits",
+  "info": {
+    "displayName": "Feature Split",
+    "icon": "layer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "imageAlt": {
+      "type": "string"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.link"
+    },
+    "reverse": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

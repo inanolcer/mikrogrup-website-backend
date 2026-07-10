@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_sections_section_headings",
+  "info": {
+    "displayName": "Section Heading",
+    "icon": "heading",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "align": {
+      "type": "enumeration",
+      "enum": [
+        "center",
+        "left"
+      ]
+    }
+  }
+}

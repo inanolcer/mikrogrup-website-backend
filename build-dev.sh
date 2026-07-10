@@ -34,7 +34,7 @@ fi
 echo "Checking if all services are up and running..."
 
 
-services=("lead-samplr-api")
+services=("teamsystem-strapi-api")
 
 
 for service in "${services[@]}"

@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_elements_leaders",
+  "info": {
+    "displayName": "Leader",
+    "icon": "user",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "photo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "highlighted": {
+      "type": "boolean",
+      "default": false
+    },
+    "accent": {
+      "type": "enumeration",
+      "enum": [
+        "magenta",
+        "orange",
+        "cyan",
+        "coral"
+      ],
+      "required": false
+    }
+  }
+}

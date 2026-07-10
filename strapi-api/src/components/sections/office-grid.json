@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_office_grids",
+  "info": {
+    "displayName": "Office Grid",
+    "icon": "pinMap",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "offices": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.office"
+    }
+  }
+}
