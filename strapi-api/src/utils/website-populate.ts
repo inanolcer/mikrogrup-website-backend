@@ -44,11 +44,11 @@ export const websiteSectionsPopulate = {
     'sections.feature-split': {
       populate: { image: true, cta: true },
     },
-    // Relation media must be nested; shallow `*` omits company.logo.
+    // Relation media / nested relations must be nested; shallow `*` omits them.
     'sections.companies-grid': {
       populate: {
         heading: true,
-        companies: { populate: { logo: true, link: true } },
+        companies: { populate: { logo: true, link: true, solutions: true } },
       },
     },
   },

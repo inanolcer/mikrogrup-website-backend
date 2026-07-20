@@ -599,6 +599,7 @@ export interface ApiCompanyCompany extends Struct.CollectionTypeSchema {
     products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    solutions: Schema.Attribute.Relation<'oneToMany', 'api::solution.solution'>;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -1208,6 +1209,7 @@ export interface ApiSolutionSolution extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    company: Schema.Attribute.Relation<'manyToOne', 'api::company.company'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

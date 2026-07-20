@@ -37,6 +37,12 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::product.product"
+    },
+    "company": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::company.company",
+      "inversedBy": "solutions"
     }
   }
 }

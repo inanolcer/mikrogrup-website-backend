@@ -65,6 +65,12 @@
       "relation": "oneToMany",
       "target": "api::product.product",
       "mappedBy": "company"
+    },
+    "solutions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::solution.solution",
+      "mappedBy": "company"
     }
   }
 }
