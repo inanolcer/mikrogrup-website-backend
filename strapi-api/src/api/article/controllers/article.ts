@@ -1,54 +1,29 @@
+/**
+ * article controller
+ */
+
 import { factories } from '@strapi/strapi';
+import { articlePopulate } from '../../../utils/website-populate';
 
 export default factories.createCoreController('api::article.article', ({ strapi }) => ({
   async find(ctx: any) {
-    // Populate all fields with proper dynamic zone handling
+    // Website populate wins over any client query-string populate.
     ctx.query = {
       ...ctx.query,
-      populate: {
-        cover: true,
-        category: {
-          populate: '*'
-        },
-        sections: {
-          populate: '*'  // For dynamic zones, we must use '*' instead of specific fields
-        },
-        author: {
-          populate: '*'
-        },
-        seo: {
-          populate: '*'
-        }
-      }
+      populate: articlePopulate,
     };
 
-    // Call the default core action
     const { data, meta } = await super.find(ctx);
     return { data, meta };
   },
 
   async findOne(ctx: any) {
-    // Use same population for single article
     ctx.query = {
       ...ctx.query,
-      populate: {
-        cover: true,
-        category: {
-          populate: '*'
-        },
-        sections: {
-          populate: '*'  // For dynamic zones, we must use '*' instead of specific fields
-        },
-        author: {
-          populate: '*'
-        },
-        seo: {
-          populate: '*'
-        }
-      }
+      populate: articlePopulate,
     };
 
     const { data, meta } = await super.findOne(ctx);
     return { data, meta };
-  }
-})); 
+  },
+}));

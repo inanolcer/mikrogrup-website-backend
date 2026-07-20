@@ -3,50 +3,27 @@
  */
 
 import { factories } from '@strapi/strapi';
+import { pagePopulate } from '../../../utils/website-populate';
 
 export default factories.createCoreController('api::page.page', ({ strapi }) => ({
   async find(ctx) {
-    // Populate all fields based on schema
+    // Website populate wins over any client query-string populate.
     ctx.query = {
       ...ctx.query,
-      populate: {
-        cover: true,
-        sections: {
-          populate: '*'  // For dynamic zones, we must use '*'
-        },
-        author: {
-          populate: '*'
-        },
-        seo: {
-          populate: '*'
-        }
-      }
+      populate: pagePopulate,
     };
 
-    // Call the default core action
     const { data, meta } = await super.find(ctx);
     return { data, meta };
   },
 
   async findOne(ctx) {
-    // Use same population for single page
     ctx.query = {
       ...ctx.query,
-      populate: {
-        cover: true,
-        sections: {
-          populate: '*'  // For dynamic zones, we must use '*'
-        },
-        author: {
-          populate: '*'
-        },
-        seo: {
-          populate: '*'
-        }
-      }
+      populate: pagePopulate,
     };
 
     const { data, meta } = await super.findOne(ctx);
     return { data, meta };
-  }
-})); 
+  },
+}));

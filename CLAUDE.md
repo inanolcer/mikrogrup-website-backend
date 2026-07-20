@@ -79,6 +79,11 @@ After `ts:generate-types` or `generate`, restart the API container. For local se
 
 - Adding a form/content type: mirror an existing `src/api/<name>/` folder
   (controller + route + service + `content-types/<name>/schema.json`).
+- **Website populate** for Nuxt (`home`, `page`, `article`) lives in
+  `strapi-api/src/utils/website-populate.ts`. Controllers force that map and
+  ignore client query-string populate. When adding a new DZ section type or
+  nested media/relation the site needs, update that file — do not reintroduce
+  large populate maps in the Nuxt app.
 - New frontend origins that POST forms must be added to
   `config/csrf-trusted-origins.ts`. Cross-origin forms send `X-CSRF-Token`.
 - Behind Traefik, Strapi trusts the proxy (`IS_PROXIED=true`); Traefik must send
