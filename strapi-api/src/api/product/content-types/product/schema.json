@@ -25,6 +25,14 @@
     "description": {
       "type": "text"
     },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "links": {
       "type": "text"
     },
@@ -42,11 +50,6 @@
         "blocks.card",
         "blocks.button"
       ]
-    },
-    "seo": {
-      "type": "component",
-      "component": "seo.seo",
-      "repeatable": true
     },
     "company": {
       "type": "relation",

@@ -1075,6 +1075,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       'api::product.product'
     > &
       Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images'>;
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
@@ -1090,7 +1091,6 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
         'blocks.button',
       ]
     >;
-    seo: Schema.Attribute.Component<'seo.seo', true>;
     slug: Schema.Attribute.UID<'title'>;
     subtitle: Schema.Attribute.String;
     title: Schema.Attribute.String;

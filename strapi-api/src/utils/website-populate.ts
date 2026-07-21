@@ -23,8 +23,18 @@ export const websiteSectionsPopulate = {
     'sections.hero': star,
     'sections.page-hero': star,
     'sections.stats-bar': star,
-    'sections.solutions-grid': star,
-    'sections.products-grid': star,
+    'sections.solutions-grid': {
+      populate: {
+        heading: true,
+        solutions: { populate: { products: { populate: { logo: true } } } },
+      },
+    },
+    'sections.products-grid': {
+      populate: {
+        heading: true,
+        products: { populate: { logo: true } },
+      },
+    },
     'sections.promo-banner': star,
     'sections.pillar-grid': star,
     'sections.news-grid': star,
