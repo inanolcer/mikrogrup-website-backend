@@ -90,3 +90,29 @@ export const articlePopulate = {
   author: star,
   seo: star,
 } as const;
+
+/** Navigation single types: 3 levels of components, forced by their controllers. */
+export const mainNavigationPopulate = {
+  items: {
+    populate: {
+      submenu: {
+        populate: {
+          links: true,
+        },
+      },
+    },
+  },
+  cta: true,
+} as const;
+
+export const footerNavigationPopulate = {
+  items: {
+    populate: {
+      submenu: {
+        populate: {
+          links: true,
+        },
+      },
+    },
+  },
+} as const;

@@ -14,7 +14,7 @@
       "url": "https://opensource.org/licenses/MIT"
     },
     "termsOfService": "YOUR_TERMS_OF_SERVICE_URL",
-    "x-generation-date": "2026-07-21T11:42:34.868Z"
+    "x-generation-date": "2026-07-21T12:50:02.729Z"
   },
   "servers": [
     {
@@ -18663,6 +18663,30 @@
           }
         }
       },
+      "NavigationNavLinkComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string"
+          }
+        }
+      },
       "NavigationSubmenuComponent": {
         "type": "object",
         "properties": {
@@ -18684,6 +18708,12 @@
           },
           "target": {
             "type": "string"
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NavigationNavLinkComponent"
+            }
           }
         }
       },
@@ -22427,6 +22457,9 @@
                   "$ref": "#/components/schemas/NavigationNavItemComponent"
                 }
               },
+              "cta": {
+                "$ref": "#/components/schemas/NavigationNavLinkComponent"
+              },
               "locale": {
                 "type": "string"
               },
@@ -22504,6 +22537,9 @@
             "items": {
               "$ref": "#/components/schemas/NavigationNavItemComponent"
             }
+          },
+          "cta": {
+            "$ref": "#/components/schemas/NavigationNavLinkComponent"
           },
           "createdAt": {
             "type": "string",
@@ -23226,6 +23262,9 @@
                   "items": {
                     "$ref": "#/components/schemas/NavigationNavItemComponent"
                   }
+                },
+                "cta": {
+                  "$ref": "#/components/schemas/NavigationNavLinkComponent"
                 },
                 "createdAt": {
                   "type": "string",

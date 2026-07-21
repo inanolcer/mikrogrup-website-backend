@@ -329,6 +329,20 @@ export interface NavigationNavItem extends Struct.ComponentSchema {
   };
 }
 
+export interface NavigationNavLink extends Struct.ComponentSchema {
+  collectionName: 'components_navigation_nav_links';
+  info: {
+    description: 'Leaf link: third-level menu entries and the header CTA';
+    displayName: 'Nav Link';
+    icon: 'link';
+  };
+  attributes: {
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    target: Schema.Attribute.String & Schema.Attribute.DefaultTo<'_self'>;
+    url: Schema.Attribute.String;
+  };
+}
+
 export interface NavigationNavbar extends Struct.ComponentSchema {
   collectionName: 'components_layout_navbars';
   info: {
@@ -351,6 +365,7 @@ export interface NavigationSubmenu extends Struct.ComponentSchema {
   };
   attributes: {
     label: Schema.Attribute.String;
+    links: Schema.Attribute.Component<'navigation.nav-link', true>;
     target: Schema.Attribute.String & Schema.Attribute.DefaultTo<'_self'>;
     url: Schema.Attribute.String;
   };
@@ -723,6 +738,7 @@ declare module '@strapi/strapi' {
       'forms.title-url-link': FormsTitleUrlLink;
       'legal.section': LegalSection;
       'navigation.nav-item': NavigationNavItem;
+      'navigation.nav-link': NavigationNavLink;
       'navigation.navbar': NavigationNavbar;
       'navigation.submenu': NavigationSubmenu;
       'sections.call-to-action': SectionsCallToAction;

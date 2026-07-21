@@ -875,6 +875,12 @@ export interface ApiMainNavigationMainNavigation
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    cta: Schema.Attribute.Component<'navigation.nav-link', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     items: Schema.Attribute.Component<'navigation.nav-item', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
