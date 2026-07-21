@@ -14,7 +14,7 @@
       "url": "https://opensource.org/licenses/MIT"
     },
     "termsOfService": "YOUR_TERMS_OF_SERVICE_URL",
-    "x-generation-date": "2026-07-21T10:40:50.974Z"
+    "x-generation-date": "2026-07-21T11:42:34.868Z"
   },
   "servers": [
     {
@@ -24306,6 +24306,9 @@
                   "default"
                 ]
               },
+              "order": {
+                "type": "integer"
+              },
               "sections": {
                 "type": "array",
                 "items": {
@@ -24456,6 +24459,31 @@
                 ],
                 "example": "string or id"
               },
+              "parent": {
+                "oneOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "example": "string or id"
+              },
+              "children": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ],
+                  "example": "string or id"
+                }
+              },
               "seo": {
                 "$ref": "#/components/schemas/SeoSeoComponent"
               },
@@ -24549,6 +24577,9 @@
             "enum": [
               "default"
             ]
+          },
+          "order": {
+            "type": "integer"
           },
           "sections": {
             "type": "array",
@@ -25585,6 +25616,495 @@
               }
             }
           },
+          "parent": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              },
+              "documentId": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "slug": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "template": {
+                "type": "string",
+                "enum": [
+                  "default"
+                ]
+              },
+              "order": {
+                "type": "integer"
+              },
+              "sections": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/BlocksRichTextComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsHeroSimpleComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsFeaturesComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BlocksQuoteComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BlocksImageComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsSectionTitleComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BlocksLogosComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BlocksCardComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BlocksButtonComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsCallToActionComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsHeroComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsPageHeroComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsStatsBarComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsFeatureSplitComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsSolutionsGridComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsCompaniesGridComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsProductsGridComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsPromoBannerComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsPillarGridComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsNewsGridComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsGlassCtaComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsPhaseTimelineComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsMediaCardGridComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsLeadershipSectionComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/LegalSectionComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsSectionHeadingComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsOfficeGridComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsValueGridComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SectionsLeadFormComponent"
+                    }
+                  ]
+                },
+                "discriminator": {
+                  "propertyName": "__component",
+                  "mapping": {
+                    "blocks.rich-text": "#/components/schemas/BlocksRichTextComponent",
+                    "sections.hero-simple": "#/components/schemas/SectionsHeroSimpleComponent",
+                    "sections.features": "#/components/schemas/SectionsFeaturesComponent",
+                    "blocks.quote": "#/components/schemas/BlocksQuoteComponent",
+                    "blocks.image": "#/components/schemas/BlocksImageComponent",
+                    "sections.section-title": "#/components/schemas/SectionsSectionTitleComponent",
+                    "blocks.logos": "#/components/schemas/BlocksLogosComponent",
+                    "blocks.card": "#/components/schemas/BlocksCardComponent",
+                    "blocks.button": "#/components/schemas/BlocksButtonComponent",
+                    "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent",
+                    "sections.hero": "#/components/schemas/SectionsHeroComponent",
+                    "sections.page-hero": "#/components/schemas/SectionsPageHeroComponent",
+                    "sections.stats-bar": "#/components/schemas/SectionsStatsBarComponent",
+                    "sections.feature-split": "#/components/schemas/SectionsFeatureSplitComponent",
+                    "sections.solutions-grid": "#/components/schemas/SectionsSolutionsGridComponent",
+                    "sections.companies-grid": "#/components/schemas/SectionsCompaniesGridComponent",
+                    "sections.products-grid": "#/components/schemas/SectionsProductsGridComponent",
+                    "sections.promo-banner": "#/components/schemas/SectionsPromoBannerComponent",
+                    "sections.pillar-grid": "#/components/schemas/SectionsPillarGridComponent",
+                    "sections.news-grid": "#/components/schemas/SectionsNewsGridComponent",
+                    "sections.glass-cta": "#/components/schemas/SectionsGlassCtaComponent",
+                    "sections.phase-timeline": "#/components/schemas/SectionsPhaseTimelineComponent",
+                    "sections.media-card-grid": "#/components/schemas/SectionsMediaCardGridComponent",
+                    "sections.leadership-section": "#/components/schemas/SectionsLeadershipSectionComponent",
+                    "legal.section": "#/components/schemas/LegalSectionComponent",
+                    "sections.section-heading": "#/components/schemas/SectionsSectionHeadingComponent",
+                    "sections.office-grid": "#/components/schemas/SectionsOfficeGridComponent",
+                    "sections.value-grid": "#/components/schemas/SectionsValueGridComponent",
+                    "sections.lead-form": "#/components/schemas/SectionsLeadFormComponent"
+                  }
+                }
+              },
+              "cover": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "documentId": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "alternativeText": {
+                    "type": "string"
+                  },
+                  "caption": {
+                    "type": "string"
+                  },
+                  "focalPoint": {},
+                  "width": {
+                    "type": "integer"
+                  },
+                  "height": {
+                    "type": "integer"
+                  },
+                  "formats": {},
+                  "hash": {
+                    "type": "string"
+                  },
+                  "ext": {
+                    "type": "string"
+                  },
+                  "mime": {
+                    "type": "string"
+                  },
+                  "size": {
+                    "type": "number",
+                    "format": "float"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "previewUrl": {
+                    "type": "string"
+                  },
+                  "provider": {
+                    "type": "string"
+                  },
+                  "provider_metadata": {},
+                  "related": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "oneOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ]
+                        },
+                        "documentId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "folder": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "oneOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      },
+                      "documentId": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "folderPath": {
+                    "type": "string"
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "publishedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "createdBy": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "oneOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      },
+                      "documentId": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "updatedBy": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "oneOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ]
+                      },
+                      "documentId": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "locale": {
+                    "type": "string"
+                  },
+                  "localizations": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "oneOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ]
+                        },
+                        "documentId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "author": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "parent": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "children": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "seo": {
+                "$ref": "#/components/schemas/SeoSeoComponent"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "publishedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "createdBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "updatedBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "locale": {
+                "type": "string"
+              },
+              "localizations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ]
+                },
+                "documentId": {
+                  "type": "string"
+                }
+              }
+            }
+          },
           "seo": {
             "$ref": "#/components/schemas/SeoSeoComponent"
           },
@@ -25656,414 +26176,6 @@
                 },
                 "documentId": {
                   "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "slug": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "template": {
-                  "type": "string",
-                  "enum": [
-                    "default"
-                  ]
-                },
-                "sections": {
-                  "type": "array",
-                  "items": {
-                    "anyOf": [
-                      {
-                        "$ref": "#/components/schemas/BlocksRichTextComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsHeroSimpleComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsFeaturesComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/BlocksQuoteComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/BlocksImageComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsSectionTitleComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/BlocksLogosComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/BlocksCardComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/BlocksButtonComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsCallToActionComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsHeroComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsPageHeroComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsStatsBarComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsFeatureSplitComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsSolutionsGridComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsCompaniesGridComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsProductsGridComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsPromoBannerComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsPillarGridComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsNewsGridComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsGlassCtaComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsPhaseTimelineComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsMediaCardGridComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsLeadershipSectionComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/LegalSectionComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsSectionHeadingComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsOfficeGridComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsValueGridComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/SectionsLeadFormComponent"
-                      }
-                    ]
-                  },
-                  "discriminator": {
-                    "propertyName": "__component",
-                    "mapping": {
-                      "blocks.rich-text": "#/components/schemas/BlocksRichTextComponent",
-                      "sections.hero-simple": "#/components/schemas/SectionsHeroSimpleComponent",
-                      "sections.features": "#/components/schemas/SectionsFeaturesComponent",
-                      "blocks.quote": "#/components/schemas/BlocksQuoteComponent",
-                      "blocks.image": "#/components/schemas/BlocksImageComponent",
-                      "sections.section-title": "#/components/schemas/SectionsSectionTitleComponent",
-                      "blocks.logos": "#/components/schemas/BlocksLogosComponent",
-                      "blocks.card": "#/components/schemas/BlocksCardComponent",
-                      "blocks.button": "#/components/schemas/BlocksButtonComponent",
-                      "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent",
-                      "sections.hero": "#/components/schemas/SectionsHeroComponent",
-                      "sections.page-hero": "#/components/schemas/SectionsPageHeroComponent",
-                      "sections.stats-bar": "#/components/schemas/SectionsStatsBarComponent",
-                      "sections.feature-split": "#/components/schemas/SectionsFeatureSplitComponent",
-                      "sections.solutions-grid": "#/components/schemas/SectionsSolutionsGridComponent",
-                      "sections.companies-grid": "#/components/schemas/SectionsCompaniesGridComponent",
-                      "sections.products-grid": "#/components/schemas/SectionsProductsGridComponent",
-                      "sections.promo-banner": "#/components/schemas/SectionsPromoBannerComponent",
-                      "sections.pillar-grid": "#/components/schemas/SectionsPillarGridComponent",
-                      "sections.news-grid": "#/components/schemas/SectionsNewsGridComponent",
-                      "sections.glass-cta": "#/components/schemas/SectionsGlassCtaComponent",
-                      "sections.phase-timeline": "#/components/schemas/SectionsPhaseTimelineComponent",
-                      "sections.media-card-grid": "#/components/schemas/SectionsMediaCardGridComponent",
-                      "sections.leadership-section": "#/components/schemas/SectionsLeadershipSectionComponent",
-                      "legal.section": "#/components/schemas/LegalSectionComponent",
-                      "sections.section-heading": "#/components/schemas/SectionsSectionHeadingComponent",
-                      "sections.office-grid": "#/components/schemas/SectionsOfficeGridComponent",
-                      "sections.value-grid": "#/components/schemas/SectionsValueGridComponent",
-                      "sections.lead-form": "#/components/schemas/SectionsLeadFormComponent"
-                    }
-                  }
-                },
-                "cover": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "oneOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "number"
-                        }
-                      ]
-                    },
-                    "documentId": {
-                      "type": "string"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "alternativeText": {
-                      "type": "string"
-                    },
-                    "caption": {
-                      "type": "string"
-                    },
-                    "focalPoint": {},
-                    "width": {
-                      "type": "integer"
-                    },
-                    "height": {
-                      "type": "integer"
-                    },
-                    "formats": {},
-                    "hash": {
-                      "type": "string"
-                    },
-                    "ext": {
-                      "type": "string"
-                    },
-                    "mime": {
-                      "type": "string"
-                    },
-                    "size": {
-                      "type": "number",
-                      "format": "float"
-                    },
-                    "url": {
-                      "type": "string"
-                    },
-                    "previewUrl": {
-                      "type": "string"
-                    },
-                    "provider": {
-                      "type": "string"
-                    },
-                    "provider_metadata": {},
-                    "related": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "oneOf": [
-                              {
-                                "type": "string"
-                              },
-                              {
-                                "type": "number"
-                              }
-                            ]
-                          },
-                          "documentId": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    },
-                    "folder": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "oneOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "number"
-                            }
-                          ]
-                        },
-                        "documentId": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "folderPath": {
-                      "type": "string"
-                    },
-                    "createdAt": {
-                      "type": "string",
-                      "format": "date-time"
-                    },
-                    "updatedAt": {
-                      "type": "string",
-                      "format": "date-time"
-                    },
-                    "publishedAt": {
-                      "type": "string",
-                      "format": "date-time"
-                    },
-                    "createdBy": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "oneOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "number"
-                            }
-                          ]
-                        },
-                        "documentId": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "updatedBy": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "oneOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "number"
-                            }
-                          ]
-                        },
-                        "documentId": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "locale": {
-                      "type": "string"
-                    },
-                    "localizations": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "oneOf": [
-                              {
-                                "type": "string"
-                              },
-                              {
-                                "type": "number"
-                              }
-                            ]
-                          },
-                          "documentId": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                "author": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "oneOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "number"
-                        }
-                      ]
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "seo": {
-                  "$ref": "#/components/schemas/SeoSeoComponent"
-                },
-                "createdAt": {
-                  "type": "string",
-                  "format": "date-time"
-                },
-                "updatedAt": {
-                  "type": "string",
-                  "format": "date-time"
-                },
-                "publishedAt": {
-                  "type": "string",
-                  "format": "date-time"
-                },
-                "createdBy": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "oneOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "number"
-                        }
-                      ]
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "updatedBy": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "oneOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "number"
-                        }
-                      ]
-                    },
-                    "documentId": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "locale": {
-                  "type": "string"
-                },
-                "localizations": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "oneOf": [
-                          {
-                            "type": "string"
-                          },
-                          {
-                            "type": "number"
-                          }
-                        ]
-                      },
-                      "documentId": {
-                        "type": "string"
-                      }
-                    }
-                  }
                 }
               }
             }

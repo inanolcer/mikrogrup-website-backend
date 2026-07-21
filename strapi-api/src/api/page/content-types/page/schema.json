@@ -50,6 +50,10 @@
       ],
       "default": "default"
     },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
     "sections": {
       "type": "dynamiczone",
       "pluginOptions": {
@@ -102,6 +106,18 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::author.author"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::page.page",
+      "inversedBy": "children"
+    },
+    "children": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::page.page",
+      "mappedBy": "parent"
     },
     "seo": {
       "type": "component",

@@ -74,6 +74,13 @@ export const pagePopulate = {
   sections: websiteSectionsPopulate,
   author: star,
   seo: star,
+  parent: {
+    fields: ['title', 'slug', 'documentId', 'order'],
+    populate: {
+      children: { fields: ['title', 'slug', 'documentId', 'order'] },
+    },
+  },
+  children: { fields: ['title', 'slug', 'documentId', 'order'] },
 } as const;
 
 export const articlePopulate = {
