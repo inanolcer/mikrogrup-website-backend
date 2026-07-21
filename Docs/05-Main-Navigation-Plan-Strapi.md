@@ -636,12 +636,10 @@ const csrf = await (await fetch(`${TARGET}/api/csrf-token`)).json();
 const csrfToken = csrf.csrfToken || csrf.data?.csrfToken;
 if (!csrfToken) throw new Error('no csrfToken');
 
-const H = {
-  'Content-Type': 'application/json',
-  Authorization: `Bearer ${jwt}`,
-  'X-CSRF-Token': csrfToken,
-  Cookie: `csrf_token=${csrfToken}`,
-};
+// The admin JWT is only valid for /admin and /content-manager routes — content
+// API writes need an API token. Create a temporary full-access one and delete
+// it in a finally block (same pattern as Docs/import-mikrogrup.mjs).
+// See the committed Docs/seed-navigation.mjs for the full implementation.
 
 for (const [singular, byLocale] of [['main-navigation', MAIN], ['footer-navigation', FOOTER]]) {
   for (const locale of ['tr', 'en']) {
