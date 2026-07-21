@@ -25,6 +25,16 @@
           "localized": true
         }
       }
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "navigation.nav-link",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

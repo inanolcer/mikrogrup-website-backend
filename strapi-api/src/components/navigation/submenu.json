@@ -16,6 +16,11 @@
     "target": {
       "type": "string",
       "default": "_self"
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.nav-link"
     }
   }
-} 
+}
