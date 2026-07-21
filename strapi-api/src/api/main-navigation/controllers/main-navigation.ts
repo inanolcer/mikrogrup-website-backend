@@ -13,7 +13,9 @@ export default factories.createCoreController('api::main-navigation.main-navigat
       populate: mainNavigationPopulate,
     };
 
-    const { data, meta } = await super.find(ctx);
-    return { data, meta };
+    // Single types return null (not { data, meta }) when no entry exists for
+    // the requested locale — never destructure the result.
+    const response = await super.find(ctx);
+    return response ?? { data: null, meta: {} };
   },
 }));
