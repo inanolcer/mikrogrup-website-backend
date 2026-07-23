@@ -17,6 +17,10 @@ export const websiteSectionsPopulate = {
     'blocks.logos': star,
     'blocks.card': star,
     'blocks.button': star,
+    'blocks.spacing': star,
+    'blocks.wave-image': {
+      populate: { image: true, image2: true },
+    },
     'sections.hero-simple': star,
     'sections.features': star,
     'sections.section-title': star,
@@ -65,7 +69,7 @@ export const websiteSectionsPopulate = {
     'legal.section': star,
     // Direct media fields — explicit keys (DZ → nested morph depth limits).
     'sections.call-to-action': {
-      populate: { bgImage: true, image: true },
+      populate: { image: true },
     },
     'sections.feature-split': {
       populate: { image: true, cta: true },

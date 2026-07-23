@@ -84,6 +84,41 @@ export interface BlocksRichText extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksSpacing extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_spacings';
+  info: {
+    description: 'Vertical space between blocks';
+    displayName: 'Spacing';
+    icon: 'arrows-alt-v';
+  };
+  attributes: {
+    size: Schema.Attribute.Enumeration<['small', 'medium', 'large', 'xlarge']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'medium'>;
+  };
+}
+
+export interface BlocksWaveImage extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_wave_images';
+  info: {
+    description: 'Decorative corner wave images (up to 2) with alignment';
+    displayName: 'Wave Image';
+    icon: 'picture';
+  };
+  attributes: {
+    alignment: Schema.Attribute.Enumeration<
+      ['top-left', 'top-right', 'bottom-left', 'bottom-right']
+    > &
+      Schema.Attribute.DefaultTo<'bottom-left'>;
+    alignment2: Schema.Attribute.Enumeration<
+      ['top-left', 'top-right', 'bottom-left', 'bottom-right']
+    > &
+      Schema.Attribute.DefaultTo<'top-right'>;
+    image: Schema.Attribute.Media<'images'>;
+    image2: Schema.Attribute.Media<'images'>;
+  };
+}
+
 export interface ElementsDownload extends Struct.ComponentSchema {
   collectionName: 'components_elements_downloads';
   info: {
@@ -381,7 +416,6 @@ export interface SectionsCallToAction extends Struct.ComponentSchema {
     icon: 'bullhorn';
   };
   attributes: {
-    bgImage: Schema.Attribute.Media<'images'>;
     buttonLabel: Schema.Attribute.String;
     buttonLink: Schema.Attribute.String;
     description: Schema.Attribute.RichText;
@@ -724,6 +758,8 @@ declare module '@strapi/strapi' {
       'blocks.logos': BlocksLogos;
       'blocks.quote': BlocksQuote;
       'blocks.rich-text': BlocksRichText;
+      'blocks.spacing': BlocksSpacing;
+      'blocks.wave-image': BlocksWaveImage;
       'elements.download': ElementsDownload;
       'elements.leader': ElementsLeader;
       'elements.link': ElementsLink;

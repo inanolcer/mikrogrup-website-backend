@@ -14,7 +14,7 @@
       "url": "https://opensource.org/licenses/MIT"
     },
     "termsOfService": "YOUR_TERMS_OF_SERVICE_URL",
-    "x-generation-date": "2026-07-23T10:54:06.691Z"
+    "x-generation-date": "2026-07-23T13:28:48.257Z"
   },
   "servers": [
     {
@@ -8076,6 +8076,12 @@
                       "$ref": "#/components/schemas/BlocksLogosComponent"
                     },
                     {
+                      "$ref": "#/components/schemas/BlocksSpacingComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                    },
+                    {
                       "$ref": "#/components/schemas/SectionsCallToActionComponent"
                     }
                   ]
@@ -8092,6 +8098,8 @@
                     "blocks.button": "#/components/schemas/BlocksButtonComponent",
                     "blocks.card": "#/components/schemas/BlocksCardComponent",
                     "blocks.logos": "#/components/schemas/BlocksLogosComponent",
+                    "blocks.spacing": "#/components/schemas/BlocksSpacingComponent",
+                    "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                     "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent"
                   }
                 }
@@ -9580,6 +9588,12 @@
                             "$ref": "#/components/schemas/BlocksLogosComponent"
                           },
                           {
+                            "$ref": "#/components/schemas/BlocksSpacingComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                          },
+                          {
                             "$ref": "#/components/schemas/SectionsCallToActionComponent"
                           }
                         ]
@@ -9596,6 +9610,8 @@
                           "blocks.button": "#/components/schemas/BlocksButtonComponent",
                           "blocks.card": "#/components/schemas/BlocksCardComponent",
                           "blocks.logos": "#/components/schemas/BlocksLogosComponent",
+                          "blocks.spacing": "#/components/schemas/BlocksSpacingComponent",
+                          "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                           "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent"
                         }
                       }
@@ -10076,6 +10092,12 @@
                   "$ref": "#/components/schemas/BlocksLogosComponent"
                 },
                 {
+                  "$ref": "#/components/schemas/BlocksSpacingComponent"
+                },
+                {
+                  "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                },
+                {
                   "$ref": "#/components/schemas/SectionsCallToActionComponent"
                 }
               ]
@@ -10092,6 +10114,8 @@
                 "blocks.button": "#/components/schemas/BlocksButtonComponent",
                 "blocks.card": "#/components/schemas/BlocksCardComponent",
                 "blocks.logos": "#/components/schemas/BlocksLogosComponent",
+                "blocks.spacing": "#/components/schemas/BlocksSpacingComponent",
+                "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                 "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent"
               }
             }
@@ -11160,7 +11184,7 @@
           }
         }
       },
-      "SectionsCallToActionComponent": {
+      "BlocksSpacingComponent": {
         "type": "object",
         "properties": {
           "id": {
@@ -11176,16 +11200,40 @@
           "__component": {
             "type": "string",
             "enum": [
-              "sections.call-to-action"
+              "blocks.spacing"
             ]
           },
-          "title": {
-            "type": "string"
+          "size": {
+            "type": "string",
+            "enum": [
+              "small",
+              "medium",
+              "large",
+              "xlarge"
+            ]
+          }
+        }
+      },
+      "BlocksWaveImageComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           },
-          "description": {
-            "type": "string"
+          "__component": {
+            "type": "string",
+            "enum": [
+              "blocks.wave-image"
+            ]
           },
-          "bgImage": {
+          "image": {
             "type": "object",
             "properties": {
               "id": {
@@ -11356,6 +11404,223 @@
                 }
               }
             }
+          },
+          "alignment": {
+            "type": "string",
+            "enum": [
+              "top-left",
+              "top-right",
+              "bottom-left",
+              "bottom-right"
+            ]
+          },
+          "image2": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              },
+              "documentId": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "focalPoint": {},
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {},
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number",
+                "format": "float"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {},
+              "related": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "folder": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "folderPath": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "publishedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "createdBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "updatedBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "locale": {
+                "type": "string"
+              },
+              "localizations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "alignment2": {
+            "type": "string",
+            "enum": [
+              "top-left",
+              "top-right",
+              "bottom-left",
+              "bottom-right"
+            ]
+          }
+        }
+      },
+      "SectionsCallToActionComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "__component": {
+            "type": "string",
+            "enum": [
+              "sections.call-to-action"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
           },
           "image": {
             "type": "object",
@@ -13150,6 +13415,12 @@
                         "$ref": "#/components/schemas/BlocksLogosComponent"
                       },
                       {
+                        "$ref": "#/components/schemas/BlocksSpacingComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                      },
+                      {
                         "$ref": "#/components/schemas/SectionsCallToActionComponent"
                       }
                     ]
@@ -13166,6 +13437,8 @@
                       "blocks.button": "#/components/schemas/BlocksButtonComponent",
                       "blocks.card": "#/components/schemas/BlocksCardComponent",
                       "blocks.logos": "#/components/schemas/BlocksLogosComponent",
+                      "blocks.spacing": "#/components/schemas/BlocksSpacingComponent",
+                      "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                       "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent"
                     }
                   }
@@ -15125,6 +15398,9 @@
                         "$ref": "#/components/schemas/SectionsCallToActionComponent"
                       },
                       {
+                        "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                      },
+                      {
                         "$ref": "#/components/schemas/SectionsFeaturesComponent"
                       },
                       {
@@ -15135,6 +15411,9 @@
                       },
                       {
                         "$ref": "#/components/schemas/BlocksButtonComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/BlocksSpacingComponent"
                       }
                     ]
                   },
@@ -15147,10 +15426,12 @@
                       "sections.section-title": "#/components/schemas/SectionsSectionTitleComponent",
                       "sections.hero-simple": "#/components/schemas/SectionsHeroSimpleComponent",
                       "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent",
+                      "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                       "sections.features": "#/components/schemas/SectionsFeaturesComponent",
                       "blocks.image": "#/components/schemas/BlocksImageComponent",
                       "blocks.card": "#/components/schemas/BlocksCardComponent",
-                      "blocks.button": "#/components/schemas/BlocksButtonComponent"
+                      "blocks.button": "#/components/schemas/BlocksButtonComponent",
+                      "blocks.spacing": "#/components/schemas/BlocksSpacingComponent"
                     }
                   }
                 },
@@ -17112,6 +17393,12 @@
                             "$ref": "#/components/schemas/BlocksLogosComponent"
                           },
                           {
+                            "$ref": "#/components/schemas/BlocksSpacingComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                          },
+                          {
                             "$ref": "#/components/schemas/SectionsCallToActionComponent"
                           }
                         ]
@@ -17128,6 +17415,8 @@
                           "blocks.button": "#/components/schemas/BlocksButtonComponent",
                           "blocks.card": "#/components/schemas/BlocksCardComponent",
                           "blocks.logos": "#/components/schemas/BlocksLogosComponent",
+                          "blocks.spacing": "#/components/schemas/BlocksSpacingComponent",
+                          "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                           "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent"
                         }
                       }
@@ -20446,6 +20735,9 @@
                       "$ref": "#/components/schemas/SectionsCallToActionComponent"
                     },
                     {
+                      "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                    },
+                    {
                       "$ref": "#/components/schemas/SectionsHeroComponent"
                     },
                     {
@@ -20498,6 +20790,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/SectionsLeadFormComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BlocksSpacingComponent"
                     }
                   ]
                 },
@@ -20514,6 +20809,7 @@
                     "blocks.card": "#/components/schemas/BlocksCardComponent",
                     "blocks.button": "#/components/schemas/BlocksButtonComponent",
                     "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent",
+                    "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                     "sections.hero": "#/components/schemas/SectionsHeroComponent",
                     "sections.page-hero": "#/components/schemas/SectionsPageHeroComponent",
                     "sections.stats-bar": "#/components/schemas/SectionsStatsBarComponent",
@@ -20531,7 +20827,8 @@
                     "sections.section-heading": "#/components/schemas/SectionsSectionHeadingComponent",
                     "sections.office-grid": "#/components/schemas/SectionsOfficeGridComponent",
                     "sections.value-grid": "#/components/schemas/SectionsValueGridComponent",
-                    "sections.lead-form": "#/components/schemas/SectionsLeadFormComponent"
+                    "sections.lead-form": "#/components/schemas/SectionsLeadFormComponent",
+                    "blocks.spacing": "#/components/schemas/BlocksSpacingComponent"
                   }
                 }
               },
@@ -20648,6 +20945,9 @@
                   "$ref": "#/components/schemas/SectionsCallToActionComponent"
                 },
                 {
+                  "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                },
+                {
                   "$ref": "#/components/schemas/SectionsHeroComponent"
                 },
                 {
@@ -20700,6 +21000,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/SectionsLeadFormComponent"
+                },
+                {
+                  "$ref": "#/components/schemas/BlocksSpacingComponent"
                 }
               ]
             },
@@ -20716,6 +21019,7 @@
                 "blocks.card": "#/components/schemas/BlocksCardComponent",
                 "blocks.button": "#/components/schemas/BlocksButtonComponent",
                 "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent",
+                "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                 "sections.hero": "#/components/schemas/SectionsHeroComponent",
                 "sections.page-hero": "#/components/schemas/SectionsPageHeroComponent",
                 "sections.stats-bar": "#/components/schemas/SectionsStatsBarComponent",
@@ -20733,7 +21037,8 @@
                 "sections.section-heading": "#/components/schemas/SectionsSectionHeadingComponent",
                 "sections.office-grid": "#/components/schemas/SectionsOfficeGridComponent",
                 "sections.value-grid": "#/components/schemas/SectionsValueGridComponent",
-                "sections.lead-form": "#/components/schemas/SectionsLeadFormComponent"
+                "sections.lead-form": "#/components/schemas/SectionsLeadFormComponent",
+                "blocks.spacing": "#/components/schemas/BlocksSpacingComponent"
               }
             }
           },
@@ -20847,6 +21152,9 @@
                         "$ref": "#/components/schemas/SectionsCallToActionComponent"
                       },
                       {
+                        "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                      },
+                      {
                         "$ref": "#/components/schemas/SectionsHeroComponent"
                       },
                       {
@@ -20899,6 +21207,9 @@
                       },
                       {
                         "$ref": "#/components/schemas/SectionsLeadFormComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/BlocksSpacingComponent"
                       }
                     ]
                   },
@@ -20915,6 +21226,7 @@
                       "blocks.card": "#/components/schemas/BlocksCardComponent",
                       "blocks.button": "#/components/schemas/BlocksButtonComponent",
                       "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent",
+                      "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                       "sections.hero": "#/components/schemas/SectionsHeroComponent",
                       "sections.page-hero": "#/components/schemas/SectionsPageHeroComponent",
                       "sections.stats-bar": "#/components/schemas/SectionsStatsBarComponent",
@@ -20932,7 +21244,8 @@
                       "sections.section-heading": "#/components/schemas/SectionsSectionHeadingComponent",
                       "sections.office-grid": "#/components/schemas/SectionsOfficeGridComponent",
                       "sections.value-grid": "#/components/schemas/SectionsValueGridComponent",
-                      "sections.lead-form": "#/components/schemas/SectionsLeadFormComponent"
+                      "sections.lead-form": "#/components/schemas/SectionsLeadFormComponent",
+                      "blocks.spacing": "#/components/schemas/BlocksSpacingComponent"
                     }
                   }
                 },
@@ -24573,6 +24886,12 @@
                       "$ref": "#/components/schemas/BlocksButtonComponent"
                     },
                     {
+                      "$ref": "#/components/schemas/BlocksSpacingComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                    },
+                    {
                       "$ref": "#/components/schemas/SectionsCallToActionComponent"
                     },
                     {
@@ -24646,6 +24965,8 @@
                     "blocks.logos": "#/components/schemas/BlocksLogosComponent",
                     "blocks.card": "#/components/schemas/BlocksCardComponent",
                     "blocks.button": "#/components/schemas/BlocksButtonComponent",
+                    "blocks.spacing": "#/components/schemas/BlocksSpacingComponent",
+                    "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                     "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent",
                     "sections.hero": "#/components/schemas/SectionsHeroComponent",
                     "sections.page-hero": "#/components/schemas/SectionsPageHeroComponent",
@@ -24845,6 +25166,12 @@
                   "$ref": "#/components/schemas/BlocksButtonComponent"
                 },
                 {
+                  "$ref": "#/components/schemas/BlocksSpacingComponent"
+                },
+                {
+                  "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                },
+                {
                   "$ref": "#/components/schemas/SectionsCallToActionComponent"
                 },
                 {
@@ -24918,6 +25245,8 @@
                 "blocks.logos": "#/components/schemas/BlocksLogosComponent",
                 "blocks.card": "#/components/schemas/BlocksCardComponent",
                 "blocks.button": "#/components/schemas/BlocksButtonComponent",
+                "blocks.spacing": "#/components/schemas/BlocksSpacingComponent",
+                "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                 "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent",
                 "sections.hero": "#/components/schemas/SectionsHeroComponent",
                 "sections.page-hero": "#/components/schemas/SectionsPageHeroComponent",
@@ -25658,6 +25987,12 @@
                             "$ref": "#/components/schemas/BlocksLogosComponent"
                           },
                           {
+                            "$ref": "#/components/schemas/BlocksSpacingComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                          },
+                          {
                             "$ref": "#/components/schemas/SectionsCallToActionComponent"
                           }
                         ]
@@ -25674,6 +26009,8 @@
                           "blocks.button": "#/components/schemas/BlocksButtonComponent",
                           "blocks.card": "#/components/schemas/BlocksCardComponent",
                           "blocks.logos": "#/components/schemas/BlocksLogosComponent",
+                          "blocks.spacing": "#/components/schemas/BlocksSpacingComponent",
+                          "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                           "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent"
                         }
                       }
@@ -25914,6 +26251,12 @@
                       "$ref": "#/components/schemas/BlocksButtonComponent"
                     },
                     {
+                      "$ref": "#/components/schemas/BlocksSpacingComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                    },
+                    {
                       "$ref": "#/components/schemas/SectionsCallToActionComponent"
                     },
                     {
@@ -25987,6 +26330,8 @@
                     "blocks.logos": "#/components/schemas/BlocksLogosComponent",
                     "blocks.card": "#/components/schemas/BlocksCardComponent",
                     "blocks.button": "#/components/schemas/BlocksButtonComponent",
+                    "blocks.spacing": "#/components/schemas/BlocksSpacingComponent",
+                    "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                     "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent",
                     "sections.hero": "#/components/schemas/SectionsHeroComponent",
                     "sections.page-hero": "#/components/schemas/SectionsPageHeroComponent",
@@ -26511,6 +26856,9 @@
                       "$ref": "#/components/schemas/SectionsCallToActionComponent"
                     },
                     {
+                      "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                    },
+                    {
                       "$ref": "#/components/schemas/SectionsFeaturesComponent"
                     },
                     {
@@ -26521,6 +26869,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/BlocksButtonComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BlocksSpacingComponent"
                     }
                   ]
                 },
@@ -26533,10 +26884,12 @@
                     "sections.section-title": "#/components/schemas/SectionsSectionTitleComponent",
                     "sections.hero-simple": "#/components/schemas/SectionsHeroSimpleComponent",
                     "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent",
+                    "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                     "sections.features": "#/components/schemas/SectionsFeaturesComponent",
                     "blocks.image": "#/components/schemas/BlocksImageComponent",
                     "blocks.card": "#/components/schemas/BlocksCardComponent",
-                    "blocks.button": "#/components/schemas/BlocksButtonComponent"
+                    "blocks.button": "#/components/schemas/BlocksButtonComponent",
+                    "blocks.spacing": "#/components/schemas/BlocksSpacingComponent"
                   }
                 }
               },
@@ -27775,6 +28128,9 @@
                   "$ref": "#/components/schemas/SectionsCallToActionComponent"
                 },
                 {
+                  "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                },
+                {
                   "$ref": "#/components/schemas/SectionsFeaturesComponent"
                 },
                 {
@@ -27785,6 +28141,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/BlocksButtonComponent"
+                },
+                {
+                  "$ref": "#/components/schemas/BlocksSpacingComponent"
                 }
               ]
             },
@@ -27797,10 +28156,12 @@
                 "sections.section-title": "#/components/schemas/SectionsSectionTitleComponent",
                 "sections.hero-simple": "#/components/schemas/SectionsHeroSimpleComponent",
                 "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent",
+                "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                 "sections.features": "#/components/schemas/SectionsFeaturesComponent",
                 "blocks.image": "#/components/schemas/BlocksImageComponent",
                 "blocks.card": "#/components/schemas/BlocksCardComponent",
-                "blocks.button": "#/components/schemas/BlocksButtonComponent"
+                "blocks.button": "#/components/schemas/BlocksButtonComponent",
+                "blocks.spacing": "#/components/schemas/BlocksSpacingComponent"
               }
             }
           },
@@ -28235,6 +28596,9 @@
                             "$ref": "#/components/schemas/SectionsCallToActionComponent"
                           },
                           {
+                            "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                          },
+                          {
                             "$ref": "#/components/schemas/SectionsFeaturesComponent"
                           },
                           {
@@ -28245,6 +28609,9 @@
                           },
                           {
                             "$ref": "#/components/schemas/BlocksButtonComponent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/BlocksSpacingComponent"
                           }
                         ]
                       },
@@ -28257,10 +28624,12 @@
                           "sections.section-title": "#/components/schemas/SectionsSectionTitleComponent",
                           "sections.hero-simple": "#/components/schemas/SectionsHeroSimpleComponent",
                           "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent",
+                          "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                           "sections.features": "#/components/schemas/SectionsFeaturesComponent",
                           "blocks.image": "#/components/schemas/BlocksImageComponent",
                           "blocks.card": "#/components/schemas/BlocksCardComponent",
-                          "blocks.button": "#/components/schemas/BlocksButtonComponent"
+                          "blocks.button": "#/components/schemas/BlocksButtonComponent",
+                          "blocks.spacing": "#/components/schemas/BlocksSpacingComponent"
                         }
                       }
                     },
@@ -28710,6 +29079,9 @@
                       "$ref": "#/components/schemas/SectionsCallToActionComponent"
                     },
                     {
+                      "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                    },
+                    {
                       "$ref": "#/components/schemas/BlocksImageComponent"
                     },
                     {
@@ -28717,6 +29089,9 @@
                     },
                     {
                       "$ref": "#/components/schemas/BlocksButtonComponent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BlocksSpacingComponent"
                     }
                   ]
                 },
@@ -28730,9 +29105,11 @@
                     "sections.hero-simple": "#/components/schemas/SectionsHeroSimpleComponent",
                     "sections.features": "#/components/schemas/SectionsFeaturesComponent",
                     "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent",
+                    "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                     "blocks.image": "#/components/schemas/BlocksImageComponent",
                     "blocks.card": "#/components/schemas/BlocksCardComponent",
-                    "blocks.button": "#/components/schemas/BlocksButtonComponent"
+                    "blocks.button": "#/components/schemas/BlocksButtonComponent",
+                    "blocks.spacing": "#/components/schemas/BlocksSpacingComponent"
                   }
                 }
               },
@@ -28861,6 +29238,9 @@
                   "$ref": "#/components/schemas/SectionsCallToActionComponent"
                 },
                 {
+                  "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                },
+                {
                   "$ref": "#/components/schemas/BlocksImageComponent"
                 },
                 {
@@ -28868,6 +29248,9 @@
                 },
                 {
                   "$ref": "#/components/schemas/BlocksButtonComponent"
+                },
+                {
+                  "$ref": "#/components/schemas/BlocksSpacingComponent"
                 }
               ]
             },
@@ -28881,9 +29264,11 @@
                 "sections.hero-simple": "#/components/schemas/SectionsHeroSimpleComponent",
                 "sections.features": "#/components/schemas/SectionsFeaturesComponent",
                 "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent",
+                "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                 "blocks.image": "#/components/schemas/BlocksImageComponent",
                 "blocks.card": "#/components/schemas/BlocksCardComponent",
-                "blocks.button": "#/components/schemas/BlocksButtonComponent"
+                "blocks.button": "#/components/schemas/BlocksButtonComponent",
+                "blocks.spacing": "#/components/schemas/BlocksSpacingComponent"
               }
             }
           },
@@ -29009,6 +29394,9 @@
                         "$ref": "#/components/schemas/SectionsCallToActionComponent"
                       },
                       {
+                        "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                      },
+                      {
                         "$ref": "#/components/schemas/BlocksImageComponent"
                       },
                       {
@@ -29016,6 +29404,9 @@
                       },
                       {
                         "$ref": "#/components/schemas/BlocksButtonComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/BlocksSpacingComponent"
                       }
                     ]
                   },
@@ -29029,9 +29420,11 @@
                       "sections.hero-simple": "#/components/schemas/SectionsHeroSimpleComponent",
                       "sections.features": "#/components/schemas/SectionsFeaturesComponent",
                       "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent",
+                      "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                       "blocks.image": "#/components/schemas/BlocksImageComponent",
                       "blocks.card": "#/components/schemas/BlocksCardComponent",
-                      "blocks.button": "#/components/schemas/BlocksButtonComponent"
+                      "blocks.button": "#/components/schemas/BlocksButtonComponent",
+                      "blocks.spacing": "#/components/schemas/BlocksSpacingComponent"
                     }
                   }
                 },
@@ -32929,6 +33322,9 @@
                         "$ref": "#/components/schemas/SectionsCallToActionComponent"
                       },
                       {
+                        "$ref": "#/components/schemas/BlocksWaveImageComponent"
+                      },
+                      {
                         "$ref": "#/components/schemas/SectionsFeaturesComponent"
                       },
                       {
@@ -32939,6 +33335,9 @@
                       },
                       {
                         "$ref": "#/components/schemas/BlocksButtonComponent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/BlocksSpacingComponent"
                       }
                     ]
                   },
@@ -32951,10 +33350,12 @@
                       "sections.section-title": "#/components/schemas/SectionsSectionTitleComponent",
                       "sections.hero-simple": "#/components/schemas/SectionsHeroSimpleComponent",
                       "sections.call-to-action": "#/components/schemas/SectionsCallToActionComponent",
+                      "blocks.wave-image": "#/components/schemas/BlocksWaveImageComponent",
                       "sections.features": "#/components/schemas/SectionsFeaturesComponent",
                       "blocks.image": "#/components/schemas/BlocksImageComponent",
                       "blocks.card": "#/components/schemas/BlocksCardComponent",
-                      "blocks.button": "#/components/schemas/BlocksButtonComponent"
+                      "blocks.button": "#/components/schemas/BlocksButtonComponent",
+                      "blocks.spacing": "#/components/schemas/BlocksSpacingComponent"
                     }
                   }
                 },

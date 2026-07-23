@@ -1,0 +1,47 @@
+{
+  "collectionName": "components_blocks_wave_images",
+  "info": {
+    "displayName": "Wave Image",
+    "icon": "picture",
+    "description": "Decorative corner wave images (up to 2) with alignment"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "alignment": {
+      "type": "enumeration",
+      "enum": [
+        "top-left",
+        "top-right",
+        "bottom-left",
+        "bottom-right"
+      ],
+      "default": "bottom-left"
+    },
+    "image2": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "alignment2": {
+      "type": "enumeration",
+      "enum": [
+        "top-left",
+        "top-right",
+        "bottom-left",
+        "bottom-right"
+      ],
+      "default": "top-right"
+    }
+  }
+}

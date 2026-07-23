@@ -71,6 +71,8 @@
         "blocks.logos",
         "blocks.card",
         "blocks.button",
+        "blocks.spacing",
+        "blocks.wave-image",
         "sections.call-to-action",
         "sections.hero",
         "sections.page-hero",

@@ -44,9 +44,11 @@
         "sections.hero-simple",
         "sections.features",
         "sections.call-to-action",
+        "blocks.wave-image",
         "blocks.image",
         "blocks.card",
-        "blocks.button"
+        "blocks.button",
+        "blocks.spacing"
       ]
     },
     "seo": {

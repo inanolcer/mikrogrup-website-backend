@@ -42,6 +42,7 @@
         "blocks.card",
         "blocks.button",
         "sections.call-to-action",
+        "blocks.wave-image",
         "sections.hero",
         "sections.page-hero",
         "sections.stats-bar",
@@ -59,7 +60,8 @@
         "sections.section-heading",
         "sections.office-grid",
         "sections.value-grid",
-        "sections.lead-form"
+        "sections.lead-form",
+        "blocks.spacing"
       ]
     },
     "seo": {
