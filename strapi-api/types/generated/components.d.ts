@@ -603,6 +603,7 @@ export interface SectionsProductsGrid extends Struct.ComponentSchema {
   };
   attributes: {
     anchorId: Schema.Attribute.String;
+    companies: Schema.Attribute.Relation<'oneToMany', 'api::company.company'>;
     heading: Schema.Attribute.Component<'sections.section-heading', false>;
     products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
   };

@@ -14,7 +14,7 @@
       "url": "https://opensource.org/licenses/MIT"
     },
     "termsOfService": "YOUR_TERMS_OF_SERVICE_URL",
-    "x-generation-date": "2026-07-23T10:23:57.650Z"
+    "x-generation-date": "2026-07-23T10:54:06.691Z"
   },
   "servers": [
     {
@@ -21715,6 +21715,27 @@
           },
           "heading": {
             "$ref": "#/components/schemas/SectionsSectionHeadingComponent"
+          },
+          "companies": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ]
+                },
+                "documentId": {
+                  "type": "string"
+                }
+              }
+            }
           },
           "products": {
             "type": "array",

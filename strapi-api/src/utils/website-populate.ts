@@ -33,6 +33,11 @@ export const websiteSectionsPopulate = {
       populate: {
         heading: true,
         products: { populate: { logo: true } },
+        companies: {
+          populate: {
+            products: { populate: { logo: true } },
+          },
+        },
       },
     },
     'sections.promo-banner': star,
