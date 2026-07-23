@@ -40,7 +40,18 @@ export const websiteSectionsPopulate = {
     'sections.news-grid': star,
     'sections.glass-cta': star,
     'sections.phase-timeline': star,
-    'sections.media-card-grid': star,
+    // Nested link + pdf on items are omitted by shallow `*` (same as companies-grid).
+    'sections.media-card-grid': {
+      populate: {
+        heading: true,
+        items: {
+          populate: {
+            pdf: true,
+            link: true,
+          },
+        },
+      },
+    },
     'sections.leadership-section': star,
     'sections.section-heading': star,
     'sections.office-grid': star,

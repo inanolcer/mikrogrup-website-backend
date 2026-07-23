@@ -137,11 +137,13 @@ export interface ElementsMediaCard extends Struct.ComponentSchema {
   info: {
     description: '';
     displayName: 'Media Card';
-    icon: 'picture';
+    icon: 'file';
   };
   attributes: {
-    image: Schema.Attribute.Component<'elements.media-item', false>;
+    date: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
     link: Schema.Attribute.Component<'elements.link', false>;
+    pdf: Schema.Attribute.Media<'files'>;
     title: Schema.Attribute.String;
   };
 }
@@ -471,7 +473,6 @@ export interface SectionsHeroSimple extends Struct.ComponentSchema {
     icon: 'layout';
   };
   attributes: {
-    button: Schema.Attribute.Component<'blocks.button', false>;
     description: Schema.Attribute.RichText;
     image: Schema.Attribute.Media<'images' | 'files'>;
     subtitle: Schema.Attribute.String;

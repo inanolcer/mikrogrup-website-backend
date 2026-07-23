@@ -2,20 +2,31 @@
   "collectionName": "components_elements_media_cards",
   "info": {
     "displayName": "Media Card",
-    "icon": "picture",
+    "icon": "file",
     "description": ""
   },
   "options": {},
   "attributes": {
+    "date": {
+      "type": "string",
+      "description": "Display date, e.g. Nisan 2026"
+    },
     "title": {
       "type": "string"
     },
-    "image": {
-      "type": "component",
-      "repeatable": false,
-      "component": "elements.media-item"
+    "description": {
+      "type": "text"
+    },
+    "pdf": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
     },
     "link": {
+      "displayName": "Link",
       "type": "component",
       "repeatable": false,
       "component": "elements.link"
