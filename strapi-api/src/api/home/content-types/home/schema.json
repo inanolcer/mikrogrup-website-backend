@@ -24,6 +24,16 @@
         }
       }
     },
+    "seo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "seo.seo",
+      "repeatable": false
+    },
     "sections": {
       "type": "dynamiczone",
       "pluginOptions": {
@@ -63,16 +73,6 @@
         "sections.lead-form",
         "blocks.spacing"
       ]
-    },
-    "seo": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "seo.seo",
-      "repeatable": false
     }
   }
 }

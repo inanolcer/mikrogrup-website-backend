@@ -18,22 +18,22 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
     },
     "slug": {
       "type": "string",
-      "required": true,
-      "unique": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true,
+      "unique": true
     },
     "description": {
       "type": "text",
@@ -45,10 +45,10 @@
     },
     "template": {
       "type": "enumeration",
+      "default": "default",
       "enum": [
         "default"
-      ],
-      "default": "default"
+      ]
     },
     "order": {
       "type": "integer",
@@ -104,11 +104,6 @@
         "files"
       ]
     },
-    "author": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::author.author"
-    },
     "parent": {
       "type": "relation",
       "relation": "manyToOne",
@@ -123,13 +118,13 @@
     },
     "seo": {
       "type": "component",
-      "component": "seo.seo",
-      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "component": "seo.seo",
+      "repeatable": false
     }
   }
 }
