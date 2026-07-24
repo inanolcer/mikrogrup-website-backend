@@ -17,11 +17,26 @@ export const websiteSectionsPopulate = {
     'blocks.logos': star,
     'blocks.card': star,
     'blocks.button': star,
+    'blocks.spacing': star,
+    'blocks.wave-image': {
+      populate: { image: true, image2: true },
+    },
     'sections.hero-simple': star,
     'sections.features': star,
     'sections.section-title': star,
-    'sections.hero': star,
-    'sections.page-hero': star,
+    'sections.hero': {
+      populate: {
+        ctaPrimary: true,
+        ctaSecondary: true,
+        media: { populate: { src: true } },
+      },
+    },
+    'sections.page-hero': {
+      populate: {
+        cta: true,
+        media: { populate: { src: true } },
+      },
+    },
     'sections.stats-bar': star,
     'sections.solutions-grid': {
       populate: {
@@ -33,15 +48,40 @@ export const websiteSectionsPopulate = {
       populate: {
         heading: true,
         products: { populate: { logo: true } },
+        companies: {
+          populate: {
+            products: { populate: { logo: true } },
+          },
+        },
       },
     },
-    'sections.promo-banner': star,
+    'sections.promo-banner': {
+      populate: {
+        cta: true,
+        media: { populate: { src: true } },
+      },
+    },
     'sections.pillar-grid': star,
     'sections.news-grid': star,
     'sections.glass-cta': star,
     'sections.phase-timeline': star,
-    'sections.media-card-grid': star,
-    'sections.leadership-section': star,
+    // Nested link + pdf on items are omitted by shallow `*` (same as companies-grid).
+    'sections.media-card-grid': {
+      populate: {
+        heading: true,
+        items: {
+          populate: {
+            pdf: true,
+            link: true,
+          },
+        },
+      },
+    },
+    'sections.leadership-section': {
+      populate: {
+        members: { populate: { photo: true } },
+      },
+    },
     'sections.section-heading': star,
     'sections.office-grid': star,
     'sections.value-grid': star,
@@ -49,7 +89,7 @@ export const websiteSectionsPopulate = {
     'legal.section': star,
     // Direct media fields — explicit keys (DZ → nested morph depth limits).
     'sections.call-to-action': {
-      populate: { bgImage: true, image: true },
+      populate: { image: true },
     },
     'sections.feature-split': {
       populate: { image: true, cta: true },
@@ -72,7 +112,6 @@ export const homePopulate = {
 export const pagePopulate = {
   cover: true,
   sections: websiteSectionsPopulate,
-  author: star,
   seo: star,
   parent: {
     fields: ['title', 'slug', 'documentId', 'order'],

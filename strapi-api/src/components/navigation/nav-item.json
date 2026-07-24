@@ -14,7 +14,11 @@
       "type": "string"
     },
     "target": {
-      "type": "string",
+      "type": "enumeration",
+      "enum": [
+        "_self",
+        "_blank"
+      ],
       "default": "_self"
     },
     "submenu": {

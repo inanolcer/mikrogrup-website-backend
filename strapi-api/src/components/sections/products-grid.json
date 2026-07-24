@@ -15,6 +15,11 @@
       "repeatable": false,
       "component": "sections.section-heading"
     },
+    "companies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::company.company"
+    },
     "products": {
       "type": "relation",
       "relation": "oneToMany",

@@ -481,6 +481,8 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
         'blocks.button',
         'blocks.card',
         'blocks.logos',
+        'blocks.spacing',
+        'blocks.wave-image',
         'sections.call-to-action',
       ]
     >;
@@ -811,6 +813,7 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
         'blocks.card',
         'blocks.button',
         'sections.call-to-action',
+        'blocks.wave-image',
         'sections.hero',
         'sections.page-hero',
         'sections.stats-bar',
@@ -829,6 +832,7 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
         'sections.office-grid',
         'sections.value-grid',
         'sections.lead-form',
+        'blocks.spacing',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -976,7 +980,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    author: Schema.Attribute.Relation<'oneToOne', 'api::author.author'>;
     children: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>;
     cover: Schema.Attribute.Media<'images' | 'files'>;
     createdAt: Schema.Attribute.DateTime;
@@ -1004,6 +1007,8 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'blocks.logos',
         'blocks.card',
         'blocks.button',
+        'blocks.spacing',
+        'blocks.wave-image',
         'sections.call-to-action',
         'sections.hero',
         'sections.page-hero',
@@ -1094,10 +1099,12 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
         'sections.section-title',
         'sections.hero-simple',
         'sections.call-to-action',
+        'blocks.wave-image',
         'sections.features',
         'blocks.image',
         'blocks.card',
         'blocks.button',
+        'blocks.spacing',
       ]
     >;
     slug: Schema.Attribute.UID<'title'>;
@@ -1144,9 +1151,11 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
         'sections.hero-simple',
         'sections.features',
         'sections.call-to-action',
+        'blocks.wave-image',
         'blocks.image',
         'blocks.card',
         'blocks.button',
+        'blocks.spacing',
       ]
     >;
     seo: Schema.Attribute.Component<'seo.seo', true>;

@@ -53,6 +53,8 @@
         "blocks.button",
         "blocks.card",
         "blocks.logos",
+        "blocks.spacing",
+        "blocks.wave-image",
         "sections.call-to-action"
       ]
     },

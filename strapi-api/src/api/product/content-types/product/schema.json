@@ -45,10 +45,12 @@
         "sections.section-title",
         "sections.hero-simple",
         "sections.call-to-action",
+        "blocks.wave-image",
         "sections.features",
         "blocks.image",
         "blocks.card",
-        "blocks.button"
+        "blocks.button",
+        "blocks.spacing"
       ]
     },
     "company": {

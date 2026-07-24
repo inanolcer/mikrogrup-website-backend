@@ -84,6 +84,42 @@ export interface BlocksRichText extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksSpacing extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_spacings';
+  info: {
+    description: 'Vertical space between blocks';
+    displayName: 'Spacing';
+    icon: 'arrows-alt-v';
+  };
+  attributes: {
+    size: Schema.Attribute.Enumeration<['small', 'medium', 'large', 'xlarge']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'medium'>;
+  };
+}
+
+export interface BlocksWaveImage extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_wave_images';
+  info: {
+    description: 'Decorative corner wave images (up to 2) with alignment';
+    displayName: 'Wave Image';
+    icon: 'picture';
+  };
+  attributes: {
+    alignment: Schema.Attribute.Enumeration<
+      ['top-left', 'top-right', 'bottom-left', 'bottom-right', 'bottom-center']
+    > &
+      Schema.Attribute.DefaultTo<'bottom-left'>;
+    alignment2: Schema.Attribute.Enumeration<
+      ['top-left', 'top-right', 'bottom-left', 'bottom-right', 'bottom-center']
+    > &
+      Schema.Attribute.DefaultTo<'top-right'>;
+    behind: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    image: Schema.Attribute.Media<'images'>;
+    image2: Schema.Attribute.Media<'images'>;
+  };
+}
+
 export interface ElementsDownload extends Struct.ComponentSchema {
   collectionName: 'components_elements_downloads';
   info: {
@@ -137,11 +173,13 @@ export interface ElementsMediaCard extends Struct.ComponentSchema {
   info: {
     description: '';
     displayName: 'Media Card';
-    icon: 'picture';
+    icon: 'file';
   };
   attributes: {
-    image: Schema.Attribute.Component<'elements.media-item', false>;
+    date: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
     link: Schema.Attribute.Component<'elements.link', false>;
+    pdf: Schema.Attribute.Media<'files'>;
     title: Schema.Attribute.String;
   };
 }
@@ -324,7 +362,8 @@ export interface NavigationNavItem extends Struct.ComponentSchema {
   attributes: {
     label: Schema.Attribute.String;
     submenu: Schema.Attribute.Component<'navigation.submenu', true>;
-    target: Schema.Attribute.String & Schema.Attribute.DefaultTo<'_self'>;
+    target: Schema.Attribute.Enumeration<['_self', '_blank']> &
+      Schema.Attribute.DefaultTo<'_self'>;
     url: Schema.Attribute.String;
   };
 }
@@ -338,7 +377,8 @@ export interface NavigationNavLink extends Struct.ComponentSchema {
   };
   attributes: {
     label: Schema.Attribute.String & Schema.Attribute.Required;
-    target: Schema.Attribute.String & Schema.Attribute.DefaultTo<'_self'>;
+    target: Schema.Attribute.Enumeration<['_self', '_blank']> &
+      Schema.Attribute.DefaultTo<'_self'>;
     url: Schema.Attribute.String;
   };
 }
@@ -366,7 +406,8 @@ export interface NavigationSubmenu extends Struct.ComponentSchema {
   attributes: {
     label: Schema.Attribute.String;
     links: Schema.Attribute.Component<'navigation.nav-link', true>;
-    target: Schema.Attribute.String & Schema.Attribute.DefaultTo<'_self'>;
+    target: Schema.Attribute.Enumeration<['_self', '_blank']> &
+      Schema.Attribute.DefaultTo<'_self'>;
     url: Schema.Attribute.String;
   };
 }
@@ -379,7 +420,6 @@ export interface SectionsCallToAction extends Struct.ComponentSchema {
     icon: 'bullhorn';
   };
   attributes: {
-    bgImage: Schema.Attribute.Media<'images'>;
     buttonLabel: Schema.Attribute.String;
     buttonLink: Schema.Attribute.String;
     description: Schema.Attribute.RichText;
@@ -471,7 +511,6 @@ export interface SectionsHeroSimple extends Struct.ComponentSchema {
     icon: 'layout';
   };
   attributes: {
-    button: Schema.Attribute.Component<'blocks.button', false>;
     description: Schema.Attribute.RichText;
     image: Schema.Attribute.Media<'images' | 'files'>;
     subtitle: Schema.Attribute.String;
@@ -602,6 +641,7 @@ export interface SectionsProductsGrid extends Struct.ComponentSchema {
   };
   attributes: {
     anchorId: Schema.Attribute.String;
+    companies: Schema.Attribute.Relation<'oneToMany', 'api::company.company'>;
     heading: Schema.Attribute.Component<'sections.section-heading', false>;
     products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
   };
@@ -619,7 +659,6 @@ export interface SectionsPromoBanner extends Struct.ComponentSchema {
     cta: Schema.Attribute.Component<'elements.link', false>;
     media: Schema.Attribute.Component<'elements.media-item', false>;
     title: Schema.Attribute.String;
-    variant: Schema.Attribute.Enumeration<['default', 'soft']>;
   };
 }
 
@@ -722,6 +761,8 @@ declare module '@strapi/strapi' {
       'blocks.logos': BlocksLogos;
       'blocks.quote': BlocksQuote;
       'blocks.rich-text': BlocksRichText;
+      'blocks.spacing': BlocksSpacing;
+      'blocks.wave-image': BlocksWaveImage;
       'elements.download': ElementsDownload;
       'elements.leader': ElementsLeader;
       'elements.link': ElementsLink;

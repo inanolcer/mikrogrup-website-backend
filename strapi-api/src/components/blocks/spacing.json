@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_blocks_spacings",
+  "info": {
+    "displayName": "Spacing",
+    "icon": "arrows-alt-v",
+    "description": "Vertical space between blocks"
+  },
+  "options": {},
+  "attributes": {
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "small",
+        "medium",
+        "large",
+        "xlarge"
+      ],
+      "default": "medium",
+      "required": true
+    }
+  }
+}

@@ -13,14 +13,6 @@
     "description": {
       "type": "richtext"
     },
-    "bgImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
     "image": {
       "type": "media",
       "multiple": false,
