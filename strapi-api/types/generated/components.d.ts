@@ -107,13 +107,14 @@ export interface BlocksWaveImage extends Struct.ComponentSchema {
   };
   attributes: {
     alignment: Schema.Attribute.Enumeration<
-      ['top-left', 'top-right', 'bottom-left', 'bottom-right']
+      ['top-left', 'top-right', 'bottom-left', 'bottom-right', 'bottom-center']
     > &
       Schema.Attribute.DefaultTo<'bottom-left'>;
     alignment2: Schema.Attribute.Enumeration<
-      ['top-left', 'top-right', 'bottom-left', 'bottom-right']
+      ['top-left', 'top-right', 'bottom-left', 'bottom-right', 'bottom-center']
     > &
       Schema.Attribute.DefaultTo<'top-right'>;
+    behind: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     image: Schema.Attribute.Media<'images'>;
     image2: Schema.Attribute.Media<'images'>;
   };
@@ -361,7 +362,8 @@ export interface NavigationNavItem extends Struct.ComponentSchema {
   attributes: {
     label: Schema.Attribute.String;
     submenu: Schema.Attribute.Component<'navigation.submenu', true>;
-    target: Schema.Attribute.String & Schema.Attribute.DefaultTo<'_self'>;
+    target: Schema.Attribute.Enumeration<['_self', '_blank']> &
+      Schema.Attribute.DefaultTo<'_self'>;
     url: Schema.Attribute.String;
   };
 }
@@ -375,7 +377,8 @@ export interface NavigationNavLink extends Struct.ComponentSchema {
   };
   attributes: {
     label: Schema.Attribute.String & Schema.Attribute.Required;
-    target: Schema.Attribute.String & Schema.Attribute.DefaultTo<'_self'>;
+    target: Schema.Attribute.Enumeration<['_self', '_blank']> &
+      Schema.Attribute.DefaultTo<'_self'>;
     url: Schema.Attribute.String;
   };
 }
@@ -403,7 +406,8 @@ export interface NavigationSubmenu extends Struct.ComponentSchema {
   attributes: {
     label: Schema.Attribute.String;
     links: Schema.Attribute.Component<'navigation.nav-link', true>;
-    target: Schema.Attribute.String & Schema.Attribute.DefaultTo<'_self'>;
+    target: Schema.Attribute.Enumeration<['_self', '_blank']> &
+      Schema.Attribute.DefaultTo<'_self'>;
     url: Schema.Attribute.String;
   };
 }
@@ -655,7 +659,6 @@ export interface SectionsPromoBanner extends Struct.ComponentSchema {
     cta: Schema.Attribute.Component<'elements.link', false>;
     media: Schema.Attribute.Component<'elements.media-item', false>;
     title: Schema.Attribute.String;
-    variant: Schema.Attribute.Enumeration<['default', 'soft']>;
   };
 }
 

@@ -24,8 +24,19 @@ export const websiteSectionsPopulate = {
     'sections.hero-simple': star,
     'sections.features': star,
     'sections.section-title': star,
-    'sections.hero': star,
-    'sections.page-hero': star,
+    'sections.hero': {
+      populate: {
+        ctaPrimary: true,
+        ctaSecondary: true,
+        media: { populate: { src: true } },
+      },
+    },
+    'sections.page-hero': {
+      populate: {
+        cta: true,
+        media: { populate: { src: true } },
+      },
+    },
     'sections.stats-bar': star,
     'sections.solutions-grid': {
       populate: {
@@ -44,7 +55,12 @@ export const websiteSectionsPopulate = {
         },
       },
     },
-    'sections.promo-banner': star,
+    'sections.promo-banner': {
+      populate: {
+        cta: true,
+        media: { populate: { src: true } },
+      },
+    },
     'sections.pillar-grid': star,
     'sections.news-grid': star,
     'sections.glass-cta': star,
@@ -61,7 +77,11 @@ export const websiteSectionsPopulate = {
         },
       },
     },
-    'sections.leadership-section': star,
+    'sections.leadership-section': {
+      populate: {
+        members: { populate: { photo: true } },
+      },
+    },
     'sections.section-heading': star,
     'sections.office-grid': star,
     'sections.value-grid': star,
@@ -92,7 +112,6 @@ export const homePopulate = {
 export const pagePopulate = {
   cover: true,
   sections: websiteSectionsPopulate,
-  author: star,
   seo: star,
   parent: {
     fields: ['title', 'slug', 'documentId', 'order'],

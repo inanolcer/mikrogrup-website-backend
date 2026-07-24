@@ -14,7 +14,7 @@
       "url": "https://opensource.org/licenses/MIT"
     },
     "termsOfService": "YOUR_TERMS_OF_SERVICE_URL",
-    "x-generation-date": "2026-07-23T13:34:52.294Z"
+    "x-generation-date": "2026-07-24T11:54:29.884Z"
   },
   "servers": [
     {
@@ -11233,6 +11233,9 @@
               "blocks.wave-image"
             ]
           },
+          "behind": {
+            "type": "boolean"
+          },
           "image": {
             "type": "object",
             "properties": {
@@ -11411,7 +11414,8 @@
               "top-left",
               "top-right",
               "bottom-left",
-              "bottom-right"
+              "bottom-right",
+              "bottom-center"
             ]
           },
           "image2": {
@@ -11592,7 +11596,8 @@
               "top-left",
               "top-right",
               "bottom-left",
-              "bottom-right"
+              "bottom-right",
+              "bottom-center"
             ]
           }
         }
@@ -18969,7 +18974,11 @@
             "type": "string"
           },
           "target": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "_self",
+              "_blank"
+            ]
           }
         }
       },
@@ -18993,7 +19002,11 @@
             "type": "string"
           },
           "target": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "_self",
+              "_blank"
+            ]
           },
           "links": {
             "type": "array",
@@ -19023,7 +19036,11 @@
             "type": "string"
           },
           "target": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "_self",
+              "_blank"
+            ]
           },
           "submenu": {
             "type": "array",
@@ -22103,13 +22120,6 @@
           },
           "media": {
             "$ref": "#/components/schemas/ElementsMediaItemComponent"
-          },
-          "variant": {
-            "type": "string",
-            "enum": [
-              "default",
-              "soft"
-            ]
           }
         }
       },
